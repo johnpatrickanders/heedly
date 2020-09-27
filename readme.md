@@ -1,31 +1,33 @@
-# FEATURES TEMPLATE
+# FEATURES TEMPLATE - heedly
 ​
 ## User Stories
 ------------
-1. As a typical user, I want to see tequila-based meetups in my home city so that I can meet and drink with strangers.
-2. As a typical user, I want to receive suggestions based on my interest so that I can meet like-minded strangers.
-3. As a host, I want to create new tequila-based events so that I can help organize events to bring people together.
-4. As a lurker, I want to see what is happening in my city and either judge others or live vicariously through Tequila Time events.
+1. As a typical user, I want to see the news most relevant to my insterests.
+2. As a typical user, I want to save articles based on my interest so that I can reference them later.
+3. As a politically-minded user, I want to browse news based on who is highly recommending it so that I can stay informed of my group's and the other group's most essential media influences.
 ​
 ## Features - MVP
 --------------
-- [ ] Sign-Up page where users submit their name, email, and home city, and create a password.
-- [ ] Log-in page where users provide their email and password to log into the site.
-- [ ] A viewable table of upcoming Tequila Times, with ability to filter by user's home city.
-- [ ] A viewable Tequila Time details page.
-- [ ] A viewable dashboard of joined/hosted Tequila Times.
-- [ ] Ability to join and leave a Tequila Time in your city.
-- [ ] Ability to create and cancel a new Tequila Time.
+- [ ] Sign-Up page where users submit their name, email, password, and political leaning
+    - [ ] Log-in page where users provide their email and password to log into the site
+- [ ] A viewable feed of top news articles from the Feedly API
+- [ ] Ability to click on item in feed to view article
+- [ ] Ability to mark article as read or unread
+    - [ ] Read page that renders a list of read articles
 ​
+Feeds
+Sources
+Articles
+Reads
+Bonus: Favorites
+Bonus: Search
+
 ## Additional Features
 -------------------
-- [ ] Display upcoming Tequila Times as a calendar view, with distinctions between past and upcoming events.
-- [ ] Ability to apply to be a host (host application form & approval process).
-- [ ] Google Map API showing events based on location.
-- [ ] Suggestions based on event details and user profiles.
-- [ ] Display attending users on event detail page, ability to view profile pages/host pages.
-- [ ] Adjust event details for local time zones.
-- [ ] Limit number of people attending each event.
+- [ ] Ability to mark article as what the other side should pay most attention to and view ranking of most HEEDed articles, one per 24hrs
+- [ ] Search for feeds sources
+        - [ ] Choosing seeds (adding and removing and viewing) (???)
+- [ ] Ability to mark article as favorite and show favorites
 ​
 ## Tables
 ------
@@ -33,15 +35,14 @@
     - name
     - email
     - password hash
-    - cityId (belongsTo to Cities.id)
-    - isHost (Boolean)
+    - political leaning (optional)
+    - heedOfTheDay (optional)
 ​
-2. Cities
-    - id (hasMany Users, Events)
-    - city name
-    - constraint: unique (& pre-defined list)
+2. Articles
+    - id 
+    - feed
 ​
-3. Events
+3. Feeds
     - cityId (belongsTo Cities.id)
     - date & time
     - venue/address
@@ -51,32 +52,28 @@
     - [additional feature] number of people attending
     - [additional feature] limit number of people attending
 ​
-4. Joint Table
+4. Join Table - Read
     - userId (belongsToMany Users.id)
-    - eventId (belongsToMany Events.id)
+    - articleId (belongsToMany Articles.id)
 ​
 ​
 ## Pages & Routes
 --------------
 ### Sign-Up
 -------
-- Form generated with `get` request, submit will `post` name, email, password, home city.
+- Form generated with `get` request, submit will `post` name, email, password, political leaning.
 - Utilize Bcrypt for user authentication & authorization (storing password hash to database).
 ​
 ### Log-In
 ------
 - Form generated with `get` request, submit will `post` email & password.
-- Utilize Bcrypt for user authentication & authorization.
+- Utilize Bcrypt for user authentication & authorization, as well as JWT.
 ​
-### Table of Events
+### Table of Articles
 ------------------
-- Table generated with `get` request, pulling data from existing events [add'l = calendar].
-- Clicking on event will bring you to event details page.
-- Ability to filter by user's city (user's city is stored upon sign-up).
-​
-### Host/Create New Event
-----------
-- Form generated with `get` request, submit will `post` which will create a new Event row/entry (automatically make user an attendee of event).
+- Table generated with `get` request, pulling articles from existing feeds.
+- Clicking on article will bring you to article read page.
+- Ability to mark as read.
 ​
 ### Event Details Page
 ------------
@@ -90,13 +87,12 @@
 - Clicking on event will bring you to event details page.
 - [Additional feature] different styling of cell if hosted event.
 ​
-### Bonus: Google Map API showing events based on location
+### Bonus: Feeds selection showing sources based on genre
 ------------------------------------------------------
-- Add to "Table of Events" page.
-- Use Event.address with API to display events based on location.
+- Add to "Table of Articles" page.
 ​
-### Bonus: Suggestions based on event details and user profiles
+### Bonus: Ability to mark Article as HEED
 -----------------------------------------------------------
-- Users to select interests upon signup.
-- Hosts to assign interest groups to new events when created.
+- Users to mark an article from END of article view.
+- Display ranking of most HEEDed articles
 - Include on designated "Suggestion" page and/or on Events Dashboard.

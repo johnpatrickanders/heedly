@@ -9,6 +9,7 @@ const logger = require('morgan');
 const dotenv = require('dotenv');
 dotenv.config();
 const routes = require('./routes');
+const { getUserFromToken } = require('./auth');
 
 const app = express();
 app.use(logger('dev'));
@@ -30,6 +31,18 @@ app.use(helmet({ hsts: false }));
 //   }
 // }));
 
+//JWT check
+app.use(async (req, res, next) => {
+  const token = req.cookies.token;
+  console.log("I'm working, I'm checking the token...")
+  if (!token) return next();
+
+  console.log("There's a token!")
+  const user = await getUserFromToken(token, res);
+  if (user) req.user = user;
+  else res.clearCookie('token');
+  next();
+});
 
 app.use(routes);
 

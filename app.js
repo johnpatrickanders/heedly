@@ -5,11 +5,12 @@ const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
 const logger = require('morgan');
-const csurf = require('csurf');
+// const csurf = require('csurf');
+const dotenv = require('dotenv');
+dotenv.config();
 const routes = require('./routes');
 
 const app = express();
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,13 +22,13 @@ app.use(cookieParser())
 // Security Middleware
 app.use(cors({ origin: true }));
 app.use(helmet({ hsts: false }));
-app.use(csurf({
-  cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production',
-    httpOnly: true
-  }
-}));
+// app.use(csurf({
+//   cookie: {
+//     secure: process.env.NODE_ENV === 'production',
+//     sameSite: process.env.NODE_ENV === 'production',
+//     httpOnly: true
+//   }
+// }));
 
 
 app.use(routes);
@@ -42,11 +43,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.use(function(_req, _res, next) {
+app.use(function (_req, _res, next) {
   next(createError(404));
 });
 
-app.use(function(err, _req, res, _next) {
+app.use(function (err, _req, res, _next) {
   res.status(err.status || 500);
   if (err.status === 401) {
     res.set('WWW-Authenticate', 'Bearer');

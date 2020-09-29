@@ -98,8 +98,8 @@ router.post(
             console.log(user)
 
             const token = await getUserToken(user);
-            res.cookie('token', token, { maxAge: expiresIn * 1000 });
-            res.json({ id: user.id, token });
+            res.cookie('token', token);
+            res.json({ id: user.id, email: user.email });
             // if (user !== null) {
             //     // If the user exists then compare their password
             //     // to the provided password.

@@ -15,14 +15,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         <Route {...rest} render={(props) => {
             return rest.needLogin === true
                 ? <Redirect to='/login' />
-                : <Login {...props} />
+                : <Component {...props} />
         }
         } />
     )
 }
 
 function App(props) {
-    const needLogin = useSelector((state) => !!state.email)
+    const needLogin = useSelector((state) => !state.auth.id)
     // const needLogin = true;
 
     console.log(needLogin)

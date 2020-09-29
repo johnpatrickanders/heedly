@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.API_KEY);
+const router = express.Router();
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 newsapi.v2.topHeadlines({

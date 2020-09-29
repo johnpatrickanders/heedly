@@ -43,8 +43,8 @@ export const tryLogin = (email, password) => {
       body: JSON.stringify({ email, password }),
     });
     if (response.ok) {
-      const { email } = await response.json();
-      dispatch(setUser(email));
+      const { id, email } = await response.json();
+      dispatch(setUser({ id, email }));
     } else {
       console.error('Bad response');
     }
@@ -66,15 +66,23 @@ function loadUser() {
   const authToken = Cookies.get("token");
   if (authToken) {
     try {
+      //gets the value from the cookie (index 0 is key, index 1 is the value)
       const payload = authToken.split(".")[1];
+      //conversa base54 encoded binary string into an ASCII string
       const decodedPayload = atob(payload);
+      //converts from json to JS object
       const payloadObj = JSON.parse(decodedPayload);
-      const { data } = payloadObj;
+      console.log(payloadObj)
+      //destructure data
+      const data = payloadObj;
+      //return user into as data (this will set the default state to the user)
       return data;
     } catch (e) {
+      //any errors then remove the cookie
       Cookies.remove("token");
     }
   }
+  //if no cookie set state to empty object
   return {};
 }
 
@@ -85,49 +93,20 @@ export const thunks = {
 };
 
 
-const token = window.localStorage.getItem('REDUX_LECTURE_AUTH_TOKEN');
+// const token = window.localStorage.getItem('REDUX_LECTURE_AUTH_TOKEN');
 
-const initialState = {
-  token,
-  email: "",
-  password: ""
-}
 
-function reducer(state = loadUser() ? loadUser() : null, action) {
+export default function reducer(state = loadUser(), action) {
   switch (action.type) {
-    case UPDATE_EMAIL_VALUE: {
-      return {
-        ...state,
-        user: action.value,
-      };
-    }
-    case UPDATE_PASSWORD_VALUE: {
-      return {
-        ...state,
-        password: action.value,
-      };
-    }
     case SET_USER:
-      return {
-        user: action.user
-      }
+      return action.user;
     case REMOVE_USER:
-      Cookies.remove("token");
       return {};
-    case UPDATE_TOKEN_VALUE: {
-      return {
-        ...state,
-        token: action.value,
-      };
-    }
-    default: {
+    default:
       return state;
-    }
   }
 }
 
 // const loadUser() {
 //   const authToken ››
 // }
-
-export default reducer;

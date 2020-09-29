@@ -1,34 +1,55 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-
+import { BrowserRouter, Switch, Redirect, Route, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import UserList from './components/UsersList';
 import { Header, Footer } from './components/layouts/index';
 import MyGrid from './components/articles/index';
 import Login from './components/layouts/login';
+import Logout from './components/layouts/Logout';
+import Test from './components/layouts/test';
+import { thunks } from './store/auth';
 
-function App() {
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    // console.log(rest.needLogin);
+    return (
+        <Route {...rest} render={(props) => {
+            return rest.needLogin === true
+                ? <Redirect to='/login' />
+                : <Login {...props} />
+        }
+        } />
+    )
+}
+
+function App(props) {
+    const needLogin = useSelector((state) => !!state.email)
+    // const needLogin = true;
+
+    console.log(needLogin)
 
     return (
         <BrowserRouter>
             <Header></Header>
             <nav>
                 <ul>
-                    <li><NavLink to="/" activeClass="active">Home</NavLink></li>
-                    <li><NavLink to="/users" activeClass="active">Users</NavLink></li>
-                    <li><NavLink to="/login" activeClass="active">Login</NavLink></li>
+                    <li><NavLink to="/" >Home</NavLink></li>
+                    <li><NavLink to="/users" >Users</NavLink></li>
+                    <li><NavLink to="/login" >Login</NavLink></li>
+                    <li><NavLink to="/logout" >Logout</NavLink></li>
                 </ul>
             </nav>
             <Switch>
+                <PrivateRoute path="/"
+                    exact={true}
+                    needLogin={needLogin}
+                    component={Test}>
+                </PrivateRoute>
                 <Route path="/users">
                     <UserList />
                 </Route>
-                <Route path="/login">
-                    <Login />
-                </Route>
+                <Route path="/login"> <Login /></Route>
+                <Route path="/logout"> <Logout /> </Route>
 
-                <Route path="/">
-                    <h1>My Home Page</h1>
-                </Route>
             </Switch>
             <MyGrid></MyGrid>
             <Footer></Footer>

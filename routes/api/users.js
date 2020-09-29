@@ -53,7 +53,7 @@ router.post(
     asyncHandler(async (req, res, next) => {
         // res.status(401).json({ errors: ["NOPE"] })
         console.log('I\'m hit')
-        const { firstName, lastName, email, password, confirmPassword, leaning } = req.body;
+        const { firstName, email, password, confirmPassword, leaning } = req.body;
 
         console.log(firstName, lastName, email, password, confirmPassword, leaning);
 
@@ -71,7 +71,7 @@ router.post(
     })
 );
 
-router.get(
+router.put(
     '/login',
     loginValidators,
     asyncHandler(async (req, res) => {
@@ -80,7 +80,7 @@ router.get(
             res.cookie('token', token, { maxAge: expiresIn * 1000 });
         }
 
-        res.redirect('/artists');
+        res.redirect('/');
     })
 );
 
@@ -95,19 +95,22 @@ router.post(
         if (validatorErrors.isEmpty()) {
             // Attempt to get the user by their email address.
             const user = await User.findOne({ where: { email: email } });
-            // console.log(user)
+            console.log(user)
 
-            if (user !== null) {
-                // If the user exists then compare their password
-                // to the provided password.
-                const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+            const token = await getUserToken(user);
+            res.cookie('token', token, { maxAge: expiresIn * 1000 });
+            res.json({ id: user.id, token });
+            // if (user !== null) {
+            //     // If the user exists then compare their password
+            //     // to the provided password.
+            //     const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
-                if (passwordMatch) {
-                    // loginUser(req, res, user);
-                    res.render('home', { firstName: user.firstName });
-                }
-            }
-            errors.push('Login failed for the provided email address and password');
+            //     if (passwordMatch) {
+            //         // loginUser(req, res, user);
+            //         res.render('home', { firstName: user.firstName });
+            //     }
+            // }
+            // errors.push('Login failed for the provided email address and password');
         } else {
             errors = validatorErrors.array().map(error => error.msg);
             console.log('Error: password incorrect');

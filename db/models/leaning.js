@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Leaning.associate = function (models) {
     // associations can be defined here
-    Leaning.hasMany(models.User, { foreignKey: 'userId', otherKey: 'leaning' })
+    Leaning.hasMany(models.User, { foreignKey: 'id', otherKey: 'leaning' })
   };
   return Leaning;
 };

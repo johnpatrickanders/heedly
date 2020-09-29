@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { tryLogin, actions } from '../../store/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +14,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
 
 function Copyright() {
   return (
@@ -46,9 +49,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+  // const {email} = useSelector(state => state.email);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
+
+  const updateEmailValue = e => setEmail(e.target.value);
+  const updatePasswordValue = e => setPassword(e.target.value);
+
+  // const updateEmailValue = (e) => {
+
+  //   return setEmail(e.target.value)
+  //   // console.log(email);
+  //   // dispatch(actions.updateEmailValue(email))
+  //   // dispatch(actions.updateEmailValue)
+  // }
+  // const updatePasswordValue = (e) => {
+  //   return setPassword(e.target.value)
+  //   // dispatch(actions.updatePasswordValue(password))
+  // }
+  const login = async (e) => {
+    e.preventDefault()
+    dispatch(actions.updateEmailValue());
+    dispatch(actions.updatePasswordValue());
+    dispatch(tryLogin(email, password));
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -68,6 +97,8 @@ export default function SignIn() {
             id="email"
             label="Email Address"
             name="email"
+            value={email}
+            onChange={updateEmailValue}
             autoComplete="email"
             autoFocus
           />
@@ -77,6 +108,8 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
+            value={password}
+            onChange={updatePasswordValue}
             label="Password"
             type="password"
             id="password"
@@ -87,11 +120,12 @@ export default function SignIn() {
             label="Remember me"
           /> */}
           <Button
-            type="submit"
+            // onSubmit={}
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={login}
           >
             Sign In
           </Button>

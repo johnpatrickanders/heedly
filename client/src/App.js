@@ -8,6 +8,7 @@ import Login from './components/layouts/login';
 import Logout from './components/layouts/Logout';
 import Test from './components/layouts/test';
 import { thunks } from './store/auth';
+import TopHeadlines from './components/articles/TopHeadlines';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -25,7 +26,7 @@ function App(props) {
     const needLogin = useSelector((state) => !state.auth.id)
     // const needLogin = true;
 
-    console.log(needLogin)
+    // console.log(needLogin)
 
     return (
         <BrowserRouter>
@@ -36,6 +37,7 @@ function App(props) {
                     <li><NavLink to="/users" >Users</NavLink></li>
                     <li><NavLink to="/login" >Login</NavLink></li>
                     <li><NavLink to="/logout" >Logout</NavLink></li>
+                    <li><NavLink to="/news" >News</NavLink></li>
                 </ul>
             </nav>
             <Switch>
@@ -49,6 +51,7 @@ function App(props) {
                 </Route>
                 <Route path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>
+                <Route path="/news"> <TopHeadlines /> </Route>
 
             </Switch>
             <MyGrid></MyGrid>

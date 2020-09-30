@@ -43,7 +43,17 @@ export default TopHeadlines => {
   }, []);
   console.log(news)
   if (!topNews) return null;
-  let key = 0;
+
+  const setImgUrls = async () => {
+    for (let i = 0; i < topNews.length; i++) {
+      let article = topNews[i];
+      let img = article.urlToImage;
+      article.img = img;
+    }
+  }
+  setImgUrls();
+
+  // let key = 0;
   // newsComponents = topNews.map((article) => {
   //   key += 1;
   //   return <ArticleCard key={key} url={article.url} title={article.title} />

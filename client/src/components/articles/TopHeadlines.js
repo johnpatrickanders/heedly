@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { thunks } from '../../store/news';
+import { TabPanel } from '../layouts/Footer';
+import TitleBarGridlist from './GridList';
 
 
 const getTopHeadlines = async () => {
@@ -11,46 +15,45 @@ const getTopHeadlines = async () => {
   }
 }
 
+
 const ArticleCard = (props) => {
+  console.log('AC PropsL', props)
   return (
     <>
-      <h2>
+      <div value={props.title} index={props.url} children={props.title}>
         {props.title}
-      </h2>
+      </div>
     </>
   )
 }
 
 export default TopHeadlines => {
   const [news, setNews] = useState(null);
-  // if (news === null) setNews(async () => await getTopHeadlines());
-  // if (!news) return null;
-  // console.log("News:", news);
-  // console.log("News array:", Object.values(news));
+  const dispatch = useDispatch();
   let newsComponents;
+  const topNews = useSelector(state => state.news).articles;
+  // const alreadyFetched = !!topNews;
+  // if (alreadyFetched) return;
+  console.log("Top news:", topNews);
   useEffect(() => {
     (async () => {
-      const data = await fetch('/api/news/');
-      if (data.ok) {
-        const { topHeadlines } = await data.json();
-        const articles = topHeadlines.articles;
-        console.log('getting top headlines...', articles);
-        setNews(articles);
-      }
-    })()
-    // const test = getTopHeadlines()
-    // console.log(test)
-    // setNews(test)
-    // eslint-disable-next-line
+      dispatch(await thunks.getTopHeadlines());
+    })();
+    setNews(topNews);
   }, []);
   console.log(news)
-  if (!news) return null;
-  newsComponents = Object.values(news).map((article) => <ArticleCard key={article.url} title={article.title} />)
-  // const news = { id: 5, email: "johnpatrickanders@gmail.com", iat: 1601475262, exp: 1601475866 }
-  // console.log(newsComponents);
-  // useEffect(() => {
+  if (!topNews) return null;
+  let key = 0;
+  // newsComponents = topNews.map((article) => {
+  //   key += 1;
+  //   return <ArticleCard key={key} url={article.url} title={article.title} />
+  // })
 
-  // }, [goodNews]);
+  newsComponents = (
+    <TitleBarGridlist articles={topNews}>
+
+    </TitleBarGridlist>
+  )
 
   return <div>
     <h2>NEWS:</h2>

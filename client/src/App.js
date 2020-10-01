@@ -10,6 +10,7 @@ import Test from './components/layouts/test';
 import { thunks } from './store/auth';
 import TopHeadlines from './components/articles/TopHeadlines';
 import { SearchResults } from './components/articles/SearchResults';
+import ExpandArticle from './components/articles/ExpandArticle';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -57,6 +58,7 @@ function App(props) {
 
             </Switch>
             {/* <MyGrid></MyGrid> */}
+            <ExpandArticle></ExpandArticle>
             <SearchResults />
             <Footer></Footer>
         </BrowserRouter>

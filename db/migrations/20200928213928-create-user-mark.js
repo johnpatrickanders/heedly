@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userHeedId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

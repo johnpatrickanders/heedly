@@ -10,8 +10,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { thunks } from '../../store/news';
 import { useDispatch } from 'react-redux';
+import SearchButton from '../articles/SearchButton';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
@@ -198,6 +199,7 @@ export default function PrimarySearchAppBar() {
               onChange={updateSearchState}
             />
           </div>
+          <SearchButton />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">

@@ -10,6 +10,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import { thunks } from '../../store/news';
 // import tileData from './tileData';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

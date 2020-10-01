@@ -37,7 +37,7 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
   const { userId, url,
     content, img, title, author,
     description, publishedAt } = req.body;
-  if (!userId) userId = 2;
+  // if (!userId) userId = 2;
   // const topHeadlines = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=f592120f5412471dbc60c8cdde2c58b9')
   const userHeed = await UserHeed.create({
     url,

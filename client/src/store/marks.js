@@ -14,8 +14,9 @@ const createArticleMark = value => ({ type: CREATE_ARTICLE_MARK, value });
 //   "userId": 1,
 //   "userHeedId": "https://www.bbc.co.uk/sport/54131955"
 // }
-const dispatchArticleMark = (article) => {
-  const userId = 3;
+const dispatchArticleMark = (articleAndUser) => {
+  const userId = articleAndUser.userId;
+  const article = articleAndUser.article;
   const { url,
     content, img, title, author,
     description, publishedAt } = article;
@@ -24,7 +25,7 @@ const dispatchArticleMark = (article) => {
     const res = await fetch(`/api/news/mark`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...article.article, userId }),
+      body: JSON.stringify({ ...article, userId }),
     });
     if (res.ok) {
       const { article } = await res.json();

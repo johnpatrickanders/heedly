@@ -1,11 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const UserHeed = sequelize.define('UserHeed', {
-    articleTitle: DataTypes.STRING
+    url: DataTypes.STRING,
+    content: DataTypes.STRING,
+    img: DataTypes.STRING,
+    publishedAt: DataTypes.STRING,
+    title: DataTypes.STRING,
+    author: DataTypes.STRING,
+    description: DataTypes.STRING
   }, {});
   UserHeed.associate = function (models) {
     // associations can be defined here
-    UserHeed.belongsToMany(models.User, { through: models.UserMark, foreignKey: 'userHeedId', otherKey: 'userId' })
+    UserHeed.belongsToMany(models.User, { through: models.UserMark, foreignKey: 'userHeedId', otherKey: 'userId' });
   };
   return UserHeed;
 };

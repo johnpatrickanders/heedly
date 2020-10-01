@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../layouts/Header';
 import Icon from '@material-ui/core/Icon';
-import { dispatchArticleMark } from '../../store/marks';
+import { thunks } from '../../store/marks';
 
 const style = {
   Paper: { padding: 20, marginTop: 10, marginBottom: 10, overflowWrap: "break-word" },
@@ -26,9 +26,12 @@ export default props => {
   if (!pageLoad) {
     return null;
   }
-  const markAsRead = () => dispatch(dispatchArticleMark())
-  console.log('content:', pageLoad.article)
   const article = pageLoad.article;
+
+  const markAsRead = () => {
+    // console.log('content:', article.title)
+    dispatch(thunks.dispatchArticleMark({ article }))
+  }
 
   return (
 

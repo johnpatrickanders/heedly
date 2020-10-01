@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
  */
 export default function TitlebarGridList(props) {
   const classes = useStyles();
+  const viewArticle = (content) => {
+    console.log(content);
+  }
 
   return (
     <div className={classes.root}>
@@ -52,7 +55,7 @@ export default function TitlebarGridList(props) {
           <ListSubheader component="div">{props.subTitle}</ListSubheader>
         </GridListTile>
         {props.articles.map((tile) => (
-          <GridListTile key={tile.img}>
+          <GridListTile key={tile.img} onClick={() => viewArticle(tile.content)}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}

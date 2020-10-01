@@ -21,7 +21,7 @@ newsRouter.get('/', asyncHandler(async (req, res) => {
 
 newsRouter.put('/search', asyncHandler(async (req, res) => {
   const searchString = req.body.searchString.search;
-  console.log(req, searchString)
+  // console.log(req, searchString)
   const topHeadlines = await newsapi.v2.everything({
     q: `${searchString}`,
     language: 'en',

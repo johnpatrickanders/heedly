@@ -5,17 +5,6 @@ import { TabPanel } from '../layouts/Footer';
 import TitleBarGridlist from './GridList';
 
 
-const getTopHeadlines = async () => {
-  const data = await fetch('/api/news/');
-  if (data.ok) {
-    const { topHeadlines } = await data.json();
-    const articles = topHeadlines.articles;
-    console.log('getting top headlines...', articles);
-    return articles;
-  }
-}
-
-
 const ArticleCard = (props) => {
   console.log('AC PropsL', props)
   return (
@@ -34,14 +23,14 @@ export default TopHeadlines => {
   const topNews = useSelector(state => state.news).articles;
   // const alreadyFetched = !!topNews;
   // if (alreadyFetched) return;
-  console.log("Top news:", topNews);
+  // console.log("Top news:", topNews);
   useEffect(() => {
     (async () => {
       dispatch(await thunks.getTopHeadlines());
     })();
     setNews(topNews);
   }, []);
-  console.log(news)
+  // console.log(news)
   if (!topNews) return null;
 
   const setImgUrls = async () => {
@@ -52,12 +41,6 @@ export default TopHeadlines => {
     }
   }
   setImgUrls();
-
-  // let key = 0;
-  // newsComponents = topNews.map((article) => {
-  //   key += 1;
-  //   return <ArticleCard key={key} url={article.url} title={article.title} />
-  // })
 
   newsComponents = (
     <TitleBarGridlist articles={topNews} subTitle={"Top News For Today:"}>

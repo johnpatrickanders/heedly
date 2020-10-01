@@ -9,6 +9,7 @@ import Logout from './components/layouts/Logout';
 import Test from './components/layouts/test';
 import { thunks } from './store/auth';
 import TopHeadlines from './components/articles/TopHeadlines';
+import { SearchResults } from './components/articles/SearchResults';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -51,7 +52,8 @@ function App(props) {
                 </Route>
                 <Route path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>
-                <Route path="/news"> <TopHeadlines /> </Route>
+                <Route exact path="/news"> <TopHeadlines /> </Route>
+                <Route path="/news/:search"><SearchResults /></Route>
 
             </Switch>
             <MyGrid></MyGrid>

@@ -60,7 +60,7 @@ export default TopHeadlines => {
   // })
 
   newsComponents = (
-    <TitleBarGridlist articles={topNews}>
+    <TitleBarGridlist articles={topNews} subTitle={"Top News For Today:"}>
 
     </TitleBarGridlist>
   )

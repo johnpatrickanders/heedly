@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu } from '@material-ui/core';
 // import { MenuIcon, SearchIcon, AccountCircle, MailIcon, NotificationsIcon, MoreIcon } from '@material-ui/icons';
@@ -8,6 +8,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { thunks } from '../../store/news';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -154,6 +156,18 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
+  const dispatch = useDispatch();
+  const updateSearchState = (e) => {
+    const val = e.target.value
+    dispatch(thunks.dispatchUpdateSearchQuery(e.target.value));
+  }
+
+  // const handleKeyDown = (e) => {
+  //   console.log('key down')
+  //   if (e.key === "Enter") {
+  //     console.log('do validate');
+  //   }
+  // }
 
   return (
     <div className={classes.grow}>
@@ -181,6 +195,7 @@ export default function PrimarySearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={updateSearchState}
             />
           </div>
           <div className={classes.grow} />

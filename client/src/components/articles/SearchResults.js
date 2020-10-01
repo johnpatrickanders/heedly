@@ -4,6 +4,7 @@ import TitleBarGridlist from './GridList';
 import ArticleGrid from './TopHeadlines';
 
 export const SearchResults = () => {
+
   return (
     <>
       <ArticleGrid />

@@ -29,7 +29,12 @@ const dispatchUpdateSearchQuery = (search) => {
 const fetchSearchQuery = (searchString) => {
   console.log(searchString)
   return async (dispatch) => {
-    const res = await fetch(`/api/news/:${searchString}`);
+    const res = await fetch(`/api/news/search`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ searchString }),
+    }
+    );
     if (res.ok) {
       const { topHeadlines } = await res.json();
       const articles = topHeadlines.articles;

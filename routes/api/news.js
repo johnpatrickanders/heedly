@@ -10,19 +10,31 @@ const newsRouter = express.Router();
 
 newsRouter.get('/', asyncHandler(async (req, res) => {
   const topHeadlines = await newsapi.v2.everything({
-    q: 'bitcoin',
-    sources: 'bbc-news,the-verge',
-    domains: 'bbc.co.uk, techcrunch.com',
-    from: '2020-09-01',
-    to: '2020-09-12',
+    q: ``,
     language: 'en',
     sortBy: 'relevancy',
-    // page: 2
+    pageSize: 20,
+    // page: 20
   })
   res.json({ topHeadlines });
 }))
 
+newsRouter.get('/search/:searchString', asyncHandler(async (req, res) => {
+  const searchString = req.params.searchString;
+  const topHeadlines = await newsapi.v2.everything({
+    q: `${searchString}`,
+    language: 'en',
+    sortBy: 'relevancy',
+    pageSize: 20,
+    // page: 20
+  })
+  res.json({ topHeadlines });
+}))
 
+// newsRouter.get('/', asyncHandler(async (req, res) => {
+//   const topHeadlines = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=f592120f5412471dbc60c8cdde2c58b9')
+//   res.json({ topHeadlines });
+// }))
 
 
 

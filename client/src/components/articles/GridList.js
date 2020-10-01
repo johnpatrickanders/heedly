@@ -49,7 +49,7 @@ export default function TitlebarGridList(props) {
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
+          <ListSubheader component="div">{props.subTitle}</ListSubheader>
         </GridListTile>
         {props.articles.map((tile) => (
           <GridListTile key={tile.img}>

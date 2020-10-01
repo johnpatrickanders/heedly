@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 const GET_TOP_HEADLINES = 'news/GET_TOP_HEADLINES';
 const UPDATE_SEARCH_STRING = 'news/UPDATE_SEARCH_QUERY';
 const GET_SEARCH_QUERY = 'news/GET_SEARCH_QUERY';
@@ -25,8 +24,6 @@ const dispatchUpdateSearchQuery = (search) => {
     dispatch(updateSearchString({ search }))
   }
 }
-
-
 
 const fetchSearchQuery = (searchString) => {
   console.log(searchString)

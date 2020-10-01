@@ -53,7 +53,13 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
     userHeedId: url
   })
   await userMark.save()
-  res.json({ message: 'success' });
+  res.json({
+    article: {
+      userId, url,
+      content, img, title, author,
+      description, publishedAt
+    }
+  });
 }))
 
 

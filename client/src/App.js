@@ -56,7 +56,8 @@ function App(props) {
                 <Route path="/news/:search"><SearchResults /></Route>
 
             </Switch>
-            <MyGrid></MyGrid>
+            {/* <MyGrid></MyGrid> */}
+            <SearchResults />
             <Footer></Footer>
         </BrowserRouter>
     );

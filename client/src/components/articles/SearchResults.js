@@ -1,15 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import TitleBarGridlist from './GridList';
+import ArticleGrid from './TopHeadlines';
 
 export const SearchResults = () => {
-  let { search } = useParams();
   return (
     <>
-      {/* <TitleBarGridlist>
-        Now Showing query: {search}
-
-      </TitleBarGridlist> */}
+      <ArticleGrid />
     </>
   )
 }

@@ -23,14 +23,16 @@ export default props => {
   const classes = useStyles();
   const dispatch = useDispatch()
   let pageLoad = useSelector(state => state.news.pageContent);
+  const userId = useSelector(state => state.auth.id);
   if (!pageLoad) {
     return null;
   }
   const article = pageLoad.article;
 
+
   const markAsRead = () => {
     // console.log('content:', article.title)
-    dispatch(thunks.dispatchArticleMark({ article }))
+    dispatch(thunks.dispatchArticleMark({ article, userId }))
   }
 
   return (

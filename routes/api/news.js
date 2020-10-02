@@ -46,6 +46,21 @@ newsRouter.get('/sources', asyncHandler(async (req, res) => {
   res.json({ sources });
 }))
 
+newsRouter.put('/sources', asyncHandler(async (req, res) => {
+  const source = req.body.source;
+  console.log(source)
+  const articlesBySource = await newsapi.v2.sources({
+    source: {
+      id: `${source}`
+    },
+    language: 'en',
+    sortBy: 'relevancy',
+    pageSize: 2,
+    // page: 20
+  })
+  res.json({ ...articlesBySource });
+}))
+
 newsRouter.post('/mark', asyncHandler(async (req, res) => {
   const { userId, url,
     content, img, title, author,

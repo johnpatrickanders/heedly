@@ -3,11 +3,13 @@ const UPDATE_SEARCH_STRING = 'news/UPDATE_SEARCH_QUERY';
 const GET_SEARCH_QUERY = 'news/GET_SEARCH_QUERY';
 const GET_ARTICLE_CONTENT = 'news/GET_ARTICLE_CONTENT';
 const GET_SOURCES = 'news/GET_SOURCES';
+const GET_ARTICLES_BY_SOURCE = 'news/GET_ARTICLES_BY_SOURCE';
 
 const updateTopHeadlinesValue = value => ({ type: GET_TOP_HEADLINES, value });
 const updateSearchString = value => ({ type: UPDATE_SEARCH_STRING, value });
 const updateArticleContent = value => ({ type: GET_ARTICLE_CONTENT, value });
 const getSources = value => ({ type: GET_SOURCES, value });
+const getArticlesBySource = value => ({ type: GET_ARTICLES_BY_SOURCE, value });
 
 const getTopHeadlines = () => {
   return async (dispatch) => {
@@ -63,6 +65,23 @@ const dispatchGetSources = () => {
   }
 }
 
+const dispatchArticlesBySource = (sourceId) => {
+  console.log(sourceId)
+  return async (dispatch) => {
+    const res = await fetch(`/api/news/sources`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sourceId }),
+    }
+    );
+    if (res.ok) {
+      const { articles } = await res.json();
+      console.log('getting articles by source...', articles);
+      dispatch(getArticlesBySource({ articles }));
+    }
+  }
+}
+
 
 export const actions = {
   updateSearchString
@@ -73,7 +92,8 @@ export const thunks = {
   dispatchUpdateSearchQuery,
   fetchSearchQuery,
   getArticleContent,
-  dispatchGetSources
+  dispatchGetSources,
+  dispatchArticlesBySource
 };
 
 
@@ -95,6 +115,11 @@ export default function reducer(state = {}, action) {
       return {
         ...state,
         sources: action.value
+      }
+    case GET_ARTICLES_BY_SOURCE:
+      return {
+        ...state,
+        articlesBySource: action.value
       }
     default:
       return state;

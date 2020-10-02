@@ -12,7 +12,7 @@ import TopHeadlines from './components/articles/TopHeadlines';
 import { SearchResults } from './components/articles/SearchResults';
 import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
-import Home from './components/articles/Home';
+import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -46,7 +46,7 @@ function App(props) {
                 </ul>
             </nav>
             <Switch>
-                <PrivateRoute path="/"
+                <PrivateRoute path="/sources"
                     exact={true}
                     needLogin={needLogin}
                     component={Home}>

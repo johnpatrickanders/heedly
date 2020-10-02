@@ -53,7 +53,9 @@ export default function TitlebarGridList(props) {
     console.log('article clicked...');
     dispatch(thunks.getArticleContent(content));
   }
+  // debugger;
 
+  const stockImg = "https://cdn.pixabay.com/photo/2016/11/06/17/17/north-america-1803504_960_720.jpg"
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList} style={{ alignContent: 'flex-start' }}>
@@ -61,8 +63,8 @@ export default function TitlebarGridList(props) {
           <ListSubheader component="div">{props.subTitle}</ListSubheader>
         </GridListTile>
         {props.articles.map((tile) => (
-          <GridListTile key={tile.img} onClick={() => viewArticle({ ...tile })}>
-            <img src={tile.img} alt={tile.title} />
+          <GridListTile key={tile.title} onClick={() => viewArticle({ ...tile })}>
+            <img src={tile.img} alt={tile.description} />
             <GridListTileBar
               title={tile.title}
               subtitle={<span>by: {tile.author}</span>}

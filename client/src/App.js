@@ -37,11 +37,10 @@ function App(props) {
             <nav>
                 <ul>
                     <li><NavLink to="/" >Home</NavLink></li>
-                    <li><NavLink to="/users" >Users</NavLink></li>
                     <li><NavLink to="/login" >Login</NavLink></li>
                     <li><NavLink to="/logout" >Logout</NavLink></li>
-                    <li><NavLink to="/news" >News</NavLink></li>
-                    <li><NavLink to="/reads" >My Reads</NavLink></li>
+                    {/* <li><NavLink to="/news" >News</NavLink></li>
+                    <li><NavLink to="/reads" >My Reads</NavLink></li> */}
                 </ul>
             </nav>
             <Switch>
@@ -50,19 +49,16 @@ function App(props) {
                     needLogin={needLogin}
                     component={Test}>
                 </PrivateRoute>
-                <Route path="/users">
-                    <UserList />
-                </Route>
                 <Route path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>
                 <Route exact path="/news"> <TopHeadlines /> </Route>
-                <Route path="/news/:search"><SearchResults /></Route>
+                <Route path="/search"><SearchResults /></Route>
                 <Route path="/reads"><MyReads /></Route>
 
             </Switch>
             {/* <MyGrid></MyGrid> */}
             <ExpandArticle></ExpandArticle>
-            <SearchResults />
+            {/* <SearchResults /> */}
             <Footer></Footer>
         </BrowserRouter>
     );

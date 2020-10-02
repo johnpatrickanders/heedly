@@ -5,12 +5,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    content: DataTypes.STRING,
-    img: DataTypes.STRING,
+    content: DataTypes.TEXT,
+    img: DataTypes.TEXT,
     publishedAt: DataTypes.STRING,
     title: DataTypes.STRING,
     author: DataTypes.STRING,
-    description: DataTypes.STRING
+    description: DataTypes.TEXT
   }, {});
   UserHeed.associate = function (models) {
     // associations can be defined here

@@ -11,6 +11,8 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import { thunks } from '../../store/news';
 import { useDispatch } from 'react-redux';
 import SearchButton from '../articles/SearchButton';
+import ReadsButton from '../articles/ReadsButton';
+import NewsButton from '../articles/NewsButton';
 
 export const useStyles = makeStyles((theme) => ({
   grow: {
@@ -200,6 +202,8 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <SearchButton />
+          <ReadsButton />
+          <NewsButton />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">

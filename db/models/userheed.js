@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     content: DataTypes.TEXT,
-    img: DataTypes.STRING,
+    img: DataTypes.TEXT,
     publishedAt: DataTypes.STRING,
     title: DataTypes.STRING,
     author: DataTypes.STRING,

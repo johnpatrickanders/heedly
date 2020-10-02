@@ -10,8 +10,8 @@ const { User, UserHeed, UserMark } = require('../../db/models');
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 
 newsRouter.get('/', asyncHandler(async (req, res) => {
-  const topHeadlines = await newsapi.v2.everything({
-    q: ``,
+  const topHeadlines = await newsapi.v2.topHeadlines({
+    country: 'us',
     language: 'en',
     sortBy: 'relevancy',
     pageSize: 20,

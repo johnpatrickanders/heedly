@@ -3,11 +3,13 @@ const UPDATE_SEARCH_STRING = 'news/UPDATE_SEARCH_QUERY';
 const GET_SEARCH_QUERY = 'news/GET_SEARCH_QUERY';
 const GET_ARTICLE_CONTENT = 'news/GET_ARTICLE_CONTENT';
 const GET_SOURCES = 'news/GET_SOURCES';
+const GET_ARTICLES_BY_SOURCE = 'news/GET_ARTICLES_BY_SOURCE';
 
 const updateTopHeadlinesValue = value => ({ type: GET_TOP_HEADLINES, value });
 const updateSearchString = value => ({ type: UPDATE_SEARCH_STRING, value });
 const updateArticleContent = value => ({ type: GET_ARTICLE_CONTENT, value });
 const getSources = value => ({ type: GET_SOURCES, value });
+const getArticlesBySource = value => ({ type: GET_ARTICLES_BY_SOURCE, value });
 
 const getTopHeadlines = () => {
   return async (dispatch) => {

@@ -49,13 +49,11 @@ newsRouter.get('/sources', asyncHandler(async (req, res) => {
 newsRouter.put('/sources', asyncHandler(async (req, res) => {
   const source = req.body.source;
   console.log(source)
-  const articlesBySource = await newsapi.v2.sources({
-    source: {
-      id: `${source}`
-    },
+  const articlesBySource = await newsapi.v2.topHeadlines({
+    sources: `${source}`,
     language: 'en',
     sortBy: 'relevancy',
-    pageSize: 2,
+    pageSize: 20,
     // page: 20
   })
   res.json({ ...articlesBySource });

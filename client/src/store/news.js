@@ -65,6 +65,23 @@ const dispatchGetSources = () => {
   }
 }
 
+const dispatchArticlesBySource = (sourceId) => {
+  console.log(sourceId)
+  return async (dispatch) => {
+    const res = await fetch(`/api/news/sources`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sourceId }),
+    }
+    );
+    if (res.ok) {
+      const { articles } = await res.json();
+      console.log('getting articles by source...', articles);
+      dispatch(getArticlesBySource({ articles }));
+    }
+  }
+}
+
 
 export const actions = {
   updateSearchString
@@ -75,7 +92,8 @@ export const thunks = {
   dispatchUpdateSearchQuery,
   fetchSearchQuery,
   getArticleContent,
-  dispatchGetSources
+  dispatchGetSources,
+  dispatchArticlesBySource
 };
 
 
@@ -97,6 +115,11 @@ export default function reducer(state = {}, action) {
       return {
         ...state,
         sources: action.value
+      }
+    case GET_ARTICLES_BY_SOURCE:
+      return {
+        ...state,
+        articlesBySource: action.value
       }
     default:
       return state;

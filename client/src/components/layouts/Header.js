@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import SearchButton from '../articles/SearchButton';
 import ReadsButton from '../articles/ReadsButton';
 import NewsButton from '../articles/NewsButton';
+import SourcesButton from '../articles/SourcesButton';
 
 export const useStyles = makeStyles((theme) => ({
   grow: {
@@ -202,8 +203,9 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <SearchButton />
-          <ReadsButton />
           <NewsButton />
+          <ReadsButton />
+          <SourcesButton />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">

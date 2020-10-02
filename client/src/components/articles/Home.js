@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -44,9 +45,12 @@ export default props => {
             <ListSubheader component="div">Explore A Source</ListSubheader>
           </GridListTile >
           {arrOfSources.map((tile) => (
-            <GridListTile style={{ height: 60, width: 1000, overflowWrap: 'break-word' }}>
+            <GridListTile style={{ height: 70, width: 1000, overflowWrap: 'break-word' }}>
               <GridListTileBar
-                title={`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
+                title={
+                  <Link to={`/sources/${tile.id}`} style={{ fontSize: 20, color: 'white', textDecoration: 'none' }}>
+                    {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
+                  </Link>}
               />
             </GridListTile>
           ))}

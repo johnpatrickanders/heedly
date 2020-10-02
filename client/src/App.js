@@ -12,6 +12,7 @@ import TopHeadlines from './components/articles/TopHeadlines';
 import { SearchResults } from './components/articles/SearchResults';
 import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
+import Home from './components/articles/Home';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -47,7 +48,7 @@ function App(props) {
                 <PrivateRoute path="/"
                     exact={true}
                     needLogin={needLogin}
-                    component={Test}>
+                    component={Home}>
                 </PrivateRoute>
                 <Route path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>

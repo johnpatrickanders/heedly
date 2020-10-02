@@ -41,7 +41,7 @@ export default props => {
       <Paper style={style.Paper}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} style={style.img}></img>
-        <Icon onClick={markAsRead} style={{ fontSize: 30, marginTop: 15, display: 'block' }}>add_circle</Icon>
+        <Icon onClick={markAsRead} className={classes.icon} style={{ fontSize: 30, marginTop: 15, display: 'block' }}>add_circle</Icon>
         <h3>
           {article.title}
         </h3>

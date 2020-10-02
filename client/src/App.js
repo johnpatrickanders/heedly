@@ -11,6 +11,7 @@ import { thunks } from './store/auth';
 import TopHeadlines from './components/articles/TopHeadlines';
 import { SearchResults } from './components/articles/SearchResults';
 import ExpandArticle from './components/articles/ExpandArticle';
+import MyReads from './components/articles/Reads';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -40,6 +41,7 @@ function App(props) {
                     <li><NavLink to="/login" >Login</NavLink></li>
                     <li><NavLink to="/logout" >Logout</NavLink></li>
                     <li><NavLink to="/news" >News</NavLink></li>
+                    <li><NavLink to="/reads" >My Reads</NavLink></li>
                 </ul>
             </nav>
             <Switch>
@@ -55,6 +57,7 @@ function App(props) {
                 <Route path="/logout"> <Logout /> </Route>
                 <Route exact path="/news"> <TopHeadlines /> </Route>
                 <Route path="/news/:search"><SearchResults /></Route>
+                <Route path="/reads"><MyReads /></Route>
 
             </Switch>
             {/* <MyGrid></MyGrid> */}

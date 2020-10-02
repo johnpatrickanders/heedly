@@ -70,7 +70,7 @@ newsRouter.put('/mark', asyncHandler(async (req, res) => {
   console.log(userId)
   const articles = await getReadsById(userId);
 
-  res.json([...articles])
+  res.json({ articles })
 
 }))
 

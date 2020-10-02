@@ -1,7 +1,9 @@
 // import { useSelector } from 'react-redux';
 const CREATE_ARTICLE_MARK = 'marks/CREATE_ARTICLE_MARK';
+const GET_ALL_READS = 'marks/GET_ALL_READS';
 
 const createArticleMark = value => ({ type: CREATE_ARTICLE_MARK, value });
+const getAllReads = value => ({ type: GET_ALL_READS, value });
 
 // const article = {
 //   "url": "https://www.bbc.co.uk/sport/54131955",
@@ -35,8 +37,26 @@ const dispatchArticleMark = (articleAndUser) => {
   }
 }
 
+const dispatchAllReads = (userId) => {
+  console.log("Getting all reads for user#:", userId)
+  return async (dispatch) => {
+    const res = await fetch(`/api/news/mark`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId }),
+    });
+    if (res.ok) {
+      const { articles } = await res.json();
+      console.log('your reads are storing:', articles);
+      dispatch(getAllReads({ articles }));
+    }
+  }
+}
+
+
 export const thunks = {
-  dispatchArticleMark
+  dispatchArticleMark,
+  dispatchAllReads
 };
 
 export default function reducer(state = {}, action) {
@@ -45,6 +65,11 @@ export default function reducer(state = {}, action) {
       return {
         ...state,
         article: action.value
+      }
+    case GET_ALL_READS:
+      return {
+        ...state,
+        reads: action.value
       }
     default:
       return state;

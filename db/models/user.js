@@ -9,7 +9,12 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     // associations can be defined here
     User.belongsTo(models.Leaning, { foreignKey: 'leaning', otherKey: 'userId' });
-    User.belongsToMany(models.UserHeed, { through: models.UserMark, foreignKey: 'id', otherKey: 'userHeedId' });
+    User.belongsToMany(models.UserHeed,
+      {
+        through: models.UserMark,
+        foreignKey: 'id',
+        otherKey: 'userHeedId'
+      });
   };
   return User;
 };

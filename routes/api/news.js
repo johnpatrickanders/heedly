@@ -49,6 +49,8 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
     publishedAt,
     description
   });
+  console.log('userId:', userId);
+  console.log('url:', url);
   const userMark = await UserMark.create({
     userId,
     userHeedId: url
@@ -56,13 +58,60 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
   await userMark.save()
   res.json({
     article: {
-      userId, url,
+      url,
       content, img, title, author,
       description, publishedAt
     }
   });
 }))
 
+newsRouter.put('/mark', asyncHandler(async (req, res) => {
+  const { userId } = req.body;
+  console.log(userId)
+  const articles = await getReadsById(userId);
+
+  res.json([...articles])
+
+}))
+
+async function getReadsById(userId) {
+  return await UserHeed.findAll({
+    include: [{
+      model: User,
+      required: true,
+      where: { id: userId },
+      attributes: [],
+    }],
+  });
+}
+
+async function one(id) {
+  const pokemon = await Pokemon.findByPk(id, {
+    include: ['items', 'player']
+  });
+
+  return {
+    attack: pokemon.attack,
+    defense: pokemon.defense,
+    id: pokemon.id,
+    imageUrl: pokemon.imageUrl,
+    name: pokemon.name,
+    type: pokemon.type,
+    moves: [...pokemon.moves],
+    items: pokemon.items.map(item => {
+      return {
+        name: item.name,
+        price: item.price,
+        happiness: item.happiness,
+        imageUrl: item.imageUrl,
+      };
+    }),
+    owner: {
+      id: pokemon.player.id,
+      name: pokemon.player.name,
+    },
+  };
+}
 
 
 // To query /v2/everything

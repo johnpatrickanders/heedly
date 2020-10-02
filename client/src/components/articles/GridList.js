@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'flex-start',
     // overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 600,
-    height: 800,
+    width: 1000,
+    height: 1000,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',

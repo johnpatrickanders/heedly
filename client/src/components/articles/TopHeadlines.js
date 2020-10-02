@@ -49,7 +49,7 @@ export default TopHeadlines => {
   )
 
   return <div>
-    <h2>NEWS:</h2>
+    {/* <h2>NEWS:</h2> */}
     {newsComponents}
   </div>
 }

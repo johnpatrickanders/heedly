@@ -12,6 +12,8 @@ import TopHeadlines from './components/articles/TopHeadlines';
 import { SearchResults } from './components/articles/SearchResults';
 import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
+import Home from './components/articles/Home';
+import ExpandSource from './components/articles/ExpandSource';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -47,8 +49,9 @@ function App(props) {
                 <PrivateRoute path="/"
                     exact={true}
                     needLogin={needLogin}
-                    component={Test}>
+                    component={Home}>
                 </PrivateRoute>
+                <Route exact path="/sources/:sourceId" component={ExpandSource}></Route>
                 <Route path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>
                 <Route exact path="/news"> <TopHeadlines /> </Route>

@@ -2,10 +2,12 @@ const GET_TOP_HEADLINES = 'news/GET_TOP_HEADLINES';
 const UPDATE_SEARCH_STRING = 'news/UPDATE_SEARCH_QUERY';
 const GET_SEARCH_QUERY = 'news/GET_SEARCH_QUERY';
 const GET_ARTICLE_CONTENT = 'news/GET_ARTICLE_CONTENT';
+const GET_SOURCES = 'news/GET_SOURCES';
 
 const updateTopHeadlinesValue = value => ({ type: GET_TOP_HEADLINES, value });
 const updateSearchString = value => ({ type: UPDATE_SEARCH_STRING, value });
 const updateArticleContent = value => ({ type: GET_ARTICLE_CONTENT, value });
+const getSources = value => ({ type: GET_SOURCES, value });
 
 const getTopHeadlines = () => {
   return async (dispatch) => {
@@ -50,6 +52,17 @@ const getArticleContent = (article) => {
   }
 }
 
+const dispatchGetSources = () => {
+  return async (dispatch) => {
+    const res = await fetch('/api/news/sources');
+    if (res.ok) {
+      const { sources: { sources } } = await res.json();
+      console.log('Your sources:', sources);
+      dispatch(getSources({ ...sources }));
+    }
+  }
+}
+
 
 export const actions = {
   updateSearchString
@@ -59,7 +72,8 @@ export const thunks = {
   getTopHeadlines,
   dispatchUpdateSearchQuery,
   fetchSearchQuery,
-  getArticleContent
+  getArticleContent,
+  dispatchGetSources
 };
 
 
@@ -76,6 +90,11 @@ export default function reducer(state = {}, action) {
       return {
         ...state,
         pageContent: action.value
+      }
+    case GET_SOURCES:
+      return {
+        ...state,
+        sources: action.value
       }
     default:
       return state;

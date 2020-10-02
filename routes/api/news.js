@@ -63,25 +63,45 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
   const { userId, url,
     content, img, title, author,
     description, publishedAt } = req.body;
-  // if (!userId) userId = 2;
-  // const topHeadlines = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=f592120f5412471dbc60c8cdde2c58b9')
-  const userHeed = await UserHeed.create({
-    url,
-    content,
-    img,
-    title,
-    author,
-    description,
-    publishedAt,
-    description
-  });
-  console.log('userId:', userId);
-  console.log('url:', url);
-  const userMark = await UserMark.create({
-    userId,
-    userHeedId: url
+
+
+  const alreadyInDb = await UserHeed.findByPk(url);
+  console.log("Already in db:", !!alreadyInDb);
+  if (!alreadyInDb) {
+    await UserHeed.create({
+      url,
+      content,
+      img,
+      title,
+      author,
+      description,
+      publishedAt,
+      description
+    });
+    // console.log('userId:', userId);
+    // console.log('url:', url);
+    const userMark = await UserMark.create({
+      userId,
+      userHeedId: url
+    })
+    return;
+  }
+
+  const alreadyMarked = await UserMark.findOne({
+    where: {
+      userId,
+      userHeedId: url
+    }
   })
-  await userMark.save()
+  console.log("Already marked:", !!alreadyMarked)
+  if (!alreadyMarked) {
+    await UserMark.create({
+      userId,
+      userHeedId: url
+    });
+    await userMark.save()
+  }
+
   res.json({
     article: {
       url,
@@ -91,13 +111,12 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
   });
 }))
 
+
 newsRouter.put('/mark', asyncHandler(async (req, res) => {
   const { userId } = req.body;
   console.log(userId)
   const articles = await getReadsById(userId);
-
   res.json({ articles })
-
 }))
 
 async function getReadsById(userId) {

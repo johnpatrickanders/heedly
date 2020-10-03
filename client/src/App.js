@@ -15,12 +15,14 @@ import MyReads from './components/articles/Reads';
 import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
 import MouseOverPopover from './components/layouts/PopOver';
+import SignUp from './components/layouts/Signup';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component }) => {
     // console.log(rest.needLogin);
+    const signedIn = useSelector(state => state.auth.id)
     return (
-        <Route {...rest} render={(props) => {
-            return rest.needLogin === true
+        <Route signedIn render={(props) => {
+            return signedIn !== true
                 ? <Redirect to='/login' />
                 : <Component {...props} />
         }
@@ -46,7 +48,6 @@ function App(props) {
                     <li><NavLink to="/reads" >My Reads</NavLink></li> */}
                 </ul>
             </nav>
-            <MouseOverPopover display={<>Hello</>}></MouseOverPopover>
             <Switch>
                 <PrivateRoute path="/sources"
                     exact={true}
@@ -55,10 +56,11 @@ function App(props) {
                 </PrivateRoute>
                 <Route exact path="/sources/:sourceId" component={ExpandSource}></Route>
                 <Route path="/login"> <Login /></Route>
+                <Route path="/signup"> <SignUp /></Route>
                 <Route path="/logout"> <Logout /> </Route>
                 <Route exact path="/news"> <TopHeadlines /> </Route>
                 <Route path="/search"><SearchResults /></Route>
-                <Route path="/reads"><MyReads /></Route>
+                <PrivateRoute path="/reads" needLogin={needLogin} component={MyReads}></PrivateRoute>
 
             </Switch>
             {/* <MyGrid></MyGrid> */}

@@ -50,7 +50,7 @@ export default function MouseOverPopover({ display, popText }) {
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus

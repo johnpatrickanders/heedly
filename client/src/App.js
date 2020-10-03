@@ -14,6 +14,7 @@ import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
 import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
+import MouseOverPopover from './components/layouts/PopOver';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     // console.log(rest.needLogin);
@@ -45,6 +46,7 @@ function App(props) {
                     <li><NavLink to="/reads" >My Reads</NavLink></li> */}
                 </ul>
             </nav>
+            <MouseOverPopover display={<>Hello</>}></MouseOverPopover>
             <Switch>
                 <PrivateRoute path="/sources"
                     exact={true}

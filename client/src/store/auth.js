@@ -54,15 +54,17 @@ export const tryLogin = (email, password) => {
 
 const logout = () => async dispatch => {
   console.log("Logging Out")
-  const res = await fetch('/api/session', {
+  const res = await fetch('/api', {
     method: "delete"
   });
   if (res.ok) {
     dispatch(removeUser());
     Cookies.remove('token');
-    console.log('Cookie removed!')
+    console.log('Cookie removed!');
+    return true;
   } else {
-    console.log('I couldn\'t log you out...')
+    console.log('I couldn\'t log you out...');
+    return false;
   }
 }
 

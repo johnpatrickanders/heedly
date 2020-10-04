@@ -66,10 +66,12 @@ function App(props) {
                 <PrivateRoute path="/reads"
                     signedIn={signedIn}
                     component={MyReads} />
-
+                <PrivateRoute path="/expand-article"
+                    signedIn={signedIn}
+                    component={ExpandArticle} />
             </Switch>
             {/* <MyGrid></MyGrid> */}
-            <ExpandArticle></ExpandArticle>
+            {/* <ExpandArticle></ExpandArticle> */}
             {/* <SearchResults /> */}
             <Footer></Footer>
         </BrowserRouter>

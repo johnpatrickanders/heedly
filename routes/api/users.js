@@ -118,6 +118,16 @@ router.post(
     })
 );
 
+
+
+
+router.delete('/', asyncHandler(async (req, res) => {
+    req.body.user = null;
+    // await req.player.save();
+    res.clearCookie('token');
+    res.json({ message: 'user logged out' });
+}));
+
 router.get('/get', asyncHandler(async (req, res) => {
     const id = req.user.id;
     res.json(id);

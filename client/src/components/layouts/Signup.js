@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const history = useHistory();
-  async function signMeUp() {
+  async function signMeUp(e) {
+    e.preventDefault();
     const firstName = document.getElementById("firstName").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -62,9 +63,7 @@ export default function SignUp() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, firstName, password, confirmPassword, leaning })
     })
-    if (res.ok) {
-      history.push('/')
-    }
+    history.push('/login')
   }
   const classes = useStyles();
 
@@ -85,7 +84,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} id="signup-form" onSubmit={signMeUp} noValidate>
+        <form className={classes.form} id="signup-form" onSubmit={signMeUp} >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
               <TextField

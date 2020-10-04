@@ -59,6 +59,10 @@ const logout = () => async dispatch => {
   });
   if (res.ok) {
     dispatch(removeUser());
+    Cookies.remove('token');
+    console.log('Cookie removed!')
+  } else {
+    console.log('I couldn\'t log you out...')
   }
 }
 

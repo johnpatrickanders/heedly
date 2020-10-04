@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import { thunks } from '../../store/news';
 import { useStyles } from '../layouts/Header';
+import { Typography } from '@material-ui/core';
 
 export default props => {
   const classes = useStyles();
@@ -47,9 +48,19 @@ export default props => {
           {arrOfSources.map((tile) => (
             <GridListTile style={{ height: 70, width: 1000, overflowWrap: 'break-word' }}>
               <GridListTileBar
+                style={{
+                  height: 'auto',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  minHeight: '100',
+                  alignContent: 'baseline',
+                  margin: 'auto'
+                }}
                 title={
                   <Link to={`/sources/${tile.id}`} style={{ fontSize: 20, color: 'white', textDecoration: 'none' }}>
-                    {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
+                    <Typography overflowWrap='true' paragraph={true}>
+                      {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
+                    </Typography>
                   </Link>}
               />
             </GridListTile>

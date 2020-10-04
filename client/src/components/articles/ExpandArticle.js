@@ -6,7 +6,12 @@ import Icon from '@material-ui/core/Icon';
 import { thunks } from '../../store/marks';
 
 const style = {
-  Paper: { padding: 20, marginTop: 10, marginBottom: 10, overflowWrap: "break-word" },
+  Paper: {
+    padding: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    overflowWrap: "break-word"
+  },
   img: {
     width: 300,
     height: 300,
@@ -37,7 +42,7 @@ export default props => {
 
   return (
 
-    <Typography className={classes.title} variant="h6">
+    <Typography className={classes.title + "," + classes.colorSecondary} variant="h6">
       <Paper style={style.Paper}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} style={style.img}></img>

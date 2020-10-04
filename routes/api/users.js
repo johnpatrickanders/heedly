@@ -47,15 +47,15 @@ router.get('/sign-up', csrfProtection, (req, res) => {
 });
 
 router.post(
-    '/',
-    userCreationValidators,
-    handleValidationErrors, // temporarily REMOVED csrfProtection
+    '/signup',
+    // userCreationValidators,
+    // handleValidationErrors, // temporarily REMOVED csrfProtection
     asyncHandler(async (req, res, next) => {
         // res.status(401).json({ errors: ["NOPE"] })
-        console.log('I\'m hit')
+        console.log('signing up...')
         const { firstName, email, password, confirmPassword, leaning } = req.body;
 
-        console.log(firstName, lastName, email, password, confirmPassword, leaning);
+        console.log(firstName, email, password, confirmPassword, leaning);
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({

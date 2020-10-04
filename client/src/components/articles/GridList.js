@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -9,6 +10,9 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import { thunks } from '../../store/news';
 // import tileData from './tileData';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MouseOverPopover from '../layouts/PopOver';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -70,10 +74,12 @@ export default function TitlebarGridList(props) {
               subtitle={<span>by: {tile.author}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <InfoIcon />
+                  <MouseOverPopover display={<InfoIcon />} popText={tile.description} />
+
                 </IconButton>
               }
             />
+
           </GridListTile>
         ))}
       </GridList>

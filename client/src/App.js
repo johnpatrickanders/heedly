@@ -14,24 +14,23 @@ import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
 import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
+import MouseOverPopover from './components/layouts/PopOver';
+import Sources from './components/articles/Sources';
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    // console.log(rest.needLogin);
     return (
-        <Route {...rest} render={(props) => {
-            return rest.needLogin === true
+        <Route {...rest} render={(props) => (
+            !rest.signedIn === true
                 ? <Redirect to='/login' />
                 : <Component {...props} />
-        }
+        )
         } />
     )
 }
 
 function App(props) {
-    const needLogin = useSelector((state) => !state.auth.id)
-    // const needLogin = true;
-
-    // console.log(needLogin)
+    const signedIn = useSelector((state) => state.auth.id)
 
     return (
         <BrowserRouter>
@@ -46,21 +45,33 @@ function App(props) {
                 </ul>
             </nav>
             <Switch>
-                <PrivateRoute path="/sources"
-                    exact={true}
-                    needLogin={needLogin}
-                    component={Home}>
-                </PrivateRoute>
-                <Route exact path="/sources/:sourceId" component={ExpandSource}></Route>
-                <Route path="/login"> <Login /></Route>
+                <PrivateRoute exact path="/sources"
+                    signedIn={signedIn}
+                    component={Sources}
+                />
+                <PrivateRoute exact path="/sources/:sourceId"
+                    signedIn={signedIn}
+                    component={ExpandSource}
+                />
+                <Route exact path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>
-                <Route exact path="/news"> <TopHeadlines /> </Route>
-                <Route path="/search"><SearchResults /></Route>
-                <Route path="/reads"><MyReads /></Route>
-
+                <PrivateRoute exact path="/news"
+                    signedIn={signedIn}
+                    component={TopHeadlines}
+                />
+                <PrivateRoute path="/search"
+                    signedIn={signedIn}
+                    component={SearchResults}
+                />
+                <PrivateRoute path="/reads"
+                    signedIn={signedIn}
+                    component={MyReads} />
+                <PrivateRoute path="/expand-article"
+                    signedIn={signedIn}
+                    component={ExpandArticle} />
             </Switch>
             {/* <MyGrid></MyGrid> */}
-            <ExpandArticle></ExpandArticle>
+            {/* <ExpandArticle></ExpandArticle> */}
             {/* <SearchResults /> */}
             <Footer></Footer>
         </BrowserRouter>

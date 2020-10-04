@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -26,20 +27,6 @@ function Copyright() {
   );
 }
 
-async function signMeUp() {
-  const firstName = document.getElementById("firstName");
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
-  const confirmPassword = document.getElementById("confirmPassword");
-  console.log(firstName, email, password, confirmPassword);
-  const leaning = "potato"
-  const res = await fetch('/api/signup', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, firstName, password, confirmPassword, leaning })
-  })
-  console.log(res);
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -62,6 +49,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const history = useHistory();
+  async function signMeUp() {
+    const firstName = document.getElementById("firstName").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    console.log("Making account for:", firstName, email, password, confirmPassword);
+    const leaning = 3;
+    const res = await fetch('/api/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, firstName, password, confirmPassword, leaning })
+    })
+    if (res.ok) {
+      history.push('/')
+    }
+  }
   const classes = useStyles();
 
   // const [firstName, setFirstName] = useState('');

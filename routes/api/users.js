@@ -42,9 +42,6 @@ router.post('/token', asyncHandler(async (req, res, next) => {
 
 }))
 
-router.get('/sign-up', csrfProtection, (req, res) => {
-    res.render('sign-up', { csrfToken: req.csrfToken() });
-});
 
 router.post(
     '/signup',
@@ -61,10 +58,10 @@ router.post(
         const user = await User.create({
             email,
             firstName,
-            lastName,
             hashedPassword,
             leaning
         });
+        await user.save();
         const token = await getUserToken(user);
         res.cookie('token', token, { maxAge: expiresIn * 1000 });
         res.json({ id: user.id, token });

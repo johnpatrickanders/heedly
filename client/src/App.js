@@ -15,26 +15,22 @@ import MyReads from './components/articles/Reads';
 import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
 import MouseOverPopover from './components/layouts/PopOver';
-import SignUp from './components/layouts/Signup';
+import Sources from './components/articles/Sources';
 
-const PrivateRoute = ({ component: Component }) => {
-    // console.log(rest.needLogin);
-    const signedIn = useSelector(state => state.auth.id)
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
-        <Route signedIn render={(props) => {
-            return signedIn !== true
+        <Route {...rest} render={(props) => (
+            !rest.signedIn === true
                 ? <Redirect to='/login' />
                 : <Component {...props} />
-        }
+        )
         } />
     )
 }
 
 function App(props) {
-    const needLogin = useSelector((state) => !state.auth.id)
-    // const needLogin = true;
-
-    // console.log(needLogin)
+    const signedIn = useSelector((state) => state.auth.id)
 
     return (
         <BrowserRouter>
@@ -49,18 +45,27 @@ function App(props) {
                 </ul>
             </nav>
             <Switch>
-                <PrivateRoute path="/sources"
-                    exact={true}
-                    needLogin={needLogin}
-                    component={Home}>
-                </PrivateRoute>
-                <Route exact path="/sources/:sourceId" component={ExpandSource}></Route>
-                <Route path="/login"> <Login /></Route>
-                <Route path="/signup"> <SignUp /></Route>
+                <PrivateRoute exact path="/sources"
+                    signedIn={signedIn}
+                    component={Sources}
+                />
+                <PrivateRoute exact path="/sources/:sourceId"
+                    signedIn={signedIn}
+                    component={ExpandSource}
+                />
+                <Route exact path="/login"> <Login /></Route>
                 <Route path="/logout"> <Logout /> </Route>
-                <Route exact path="/news"> <TopHeadlines /> </Route>
-                <Route path="/search"><SearchResults /></Route>
-                <PrivateRoute path="/reads" needLogin={needLogin} component={MyReads}></PrivateRoute>
+                <PrivateRoute exact path="/news"
+                    signedIn={signedIn}
+                    component={TopHeadlines}
+                />
+                <PrivateRoute path="/search"
+                    signedIn={signedIn}
+                    component={SearchResults}
+                />
+                <PrivateRoute path="/reads"
+                    signedIn={signedIn}
+                    component={MyReads} />
 
             </Switch>
             {/* <MyGrid></MyGrid> */}

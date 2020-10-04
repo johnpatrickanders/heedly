@@ -16,6 +16,7 @@ import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
 import MouseOverPopover from './components/layouts/PopOver';
 import Sources from './components/articles/Sources';
+import SignUp from './components/layouts/Signup';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -54,6 +55,7 @@ function App(props) {
                     component={ExpandSource}
                 />
                 <Route exact path="/login"> <Login /></Route>
+                <Route exact path="/signup"> <SignUp /></Route>
                 <Route path="/logout"> <Logout /> </Route>
                 <PrivateRoute exact path="/news"
                     signedIn={signedIn}

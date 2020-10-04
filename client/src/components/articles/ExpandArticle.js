@@ -7,8 +7,8 @@ import { thunks } from '../../store/marks';
 
 const style = {
   Paper: {
-    padding: 20,
-    marginTop: 10,
+    padding: 100,
+    marginTop: 20,
     marginBottom: 10,
     overflowWrap: "break-word"
   },

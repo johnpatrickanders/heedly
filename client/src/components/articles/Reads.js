@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ArticleList from './GridList';
 import { thunks } from '../../store/marks';
 
-export default function () {
+export default function (props) {
   const dispatch = useDispatch();
 
   const userId = useSelector(state => state.auth.id);

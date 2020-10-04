@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -51,11 +51,13 @@ const useStyles = makeStyles((theme) => ({
  * ];
  */
 export default function TitlebarGridList(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const viewArticle = (content) => {
+  const viewArticle = ({ tile }) => {
     console.log('article clicked...');
-    dispatch(thunks.getArticleContent(content));
+    dispatch(thunks.getArticleContent(tile));
+    history.push('/expand-article')
   }
   // debugger;
 
@@ -67,7 +69,7 @@ export default function TitlebarGridList(props) {
           <ListSubheader component="div">{props.subTitle}</ListSubheader>
         </GridListTile>
         {props.articles.map((tile) => (
-          <GridListTile key={tile.title} onClick={() => viewArticle({ ...tile })}>
+          <GridListTile key={tile.title} onClick={() => viewArticle({ tile })}>
             <img src={tile.img} alt={tile.description} />
             <GridListTileBar
               title={tile.title}

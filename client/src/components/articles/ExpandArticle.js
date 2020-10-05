@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../layouts/Header';
-import Icon from '@material-ui/core/Icon';
+import { Icon, IconButton } from '@material-ui/core/';
 import { thunks } from '../../store/marks';
 
 const style = {
@@ -24,9 +24,30 @@ const style = {
 //   return
 // }
 
-export default props => {
+const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const markAsRead = () => {
+    // console.log('content:', article.title)
+    dispatch(thunks.dispatchArticleMark({ article, userId }))
+  }
+  return (
+    <IconButton
+      aria-haspopup="true"
+      color="inherit"
+      style={{ fontSize: 30, marginTop: 15, display: 'block' }}
+    >
+      <Icon onClick={markAsRead}
+        className={classes.icon}
+        style={{ fontSize: 30, display: 'block' }}
+        fullWidth='true'
+      >add_circle</Icon>
+    </IconButton>
+  )
+}
+
+export default props => {
+  const classes = useStyles();
   let pageLoad = useSelector(state => state.news.pageContent);
   const userId = useSelector(state => state.auth.id);
   if (!pageLoad) {
@@ -35,10 +56,8 @@ export default props => {
   const article = pageLoad.article;
 
 
-  const markAsRead = () => {
-    // console.log('content:', article.title)
-    dispatch(thunks.dispatchArticleMark({ article, userId }))
-  }
+
+
 
   return (
 
@@ -46,7 +65,7 @@ export default props => {
       <Paper style={style.Paper}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} style={style.img}></img>
-        <Icon onClick={markAsRead} className={classes.icon} style={{ fontSize: 30, marginTop: 15, display: 'block' }}>add_circle</Icon>
+        <MyCustomButton article={article} userId={userId} />
         <h3>
           {article.title}
         </h3>
@@ -54,7 +73,5 @@ export default props => {
         <a href={article.url} style={{ display: 'block' }} > Read full story here...</a>
       </Paper>
     </Typography >
-
-
   )
 }

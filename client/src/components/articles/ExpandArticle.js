@@ -19,11 +19,6 @@ const style = {
   }
 }
 
-// const PlusIcon = props => {
-
-//   return
-// }
-
 const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
   const dispatch = useDispatch()

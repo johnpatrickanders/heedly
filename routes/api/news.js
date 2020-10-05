@@ -6,6 +6,7 @@ const newsapi = new NewsAPI(process.env.API_KEY);
 const express = require('express');
 const newsRouter = express.Router();
 const { User, UserHeed, UserMark } = require('../../db/models');
+const Sequelize = require('sequelize');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 
@@ -129,6 +130,15 @@ async function getReadsById(userId) {
     }],
   });
 }
+
+// async function rankArticles() {
+//   return await UserMark.findAll({
+//     attributes: [
+//       'id', 'rating',
+//       [Sequelize.literal('(RANK() OVER (ORDER BY rating DESC))'), 'rank']
+// ]
+//   })
+// }
 
 async function one(id) {
   const pokemon = await Pokemon.findByPk(id, {

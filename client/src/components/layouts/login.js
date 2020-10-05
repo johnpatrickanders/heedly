@@ -73,7 +73,7 @@ export default function SignIn(props) {
   const demoLogin = async (e) => {
     e.preventDefault()
     dispatch(tryLogin("demo@example.com", "password"));
-    history.push('/news');
+    // history.push('/news');
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -133,7 +133,7 @@ export default function SignIn(props) {
               </Link>
             </Grid> */}
             <Grid item>
-              <Link href variant="body2">
+              <Link href='/signup' variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

@@ -45,6 +45,7 @@ export const tryLogin = (email, password) => {
     if (response.ok) {
       const { id, email } = await response.json();
       dispatch(setUser({ id, email }));
+      window.location = '/news';
     } else {
       console.error('Bad response');
     }

@@ -41,6 +41,7 @@ export default props => {
           style={{
             alignContent: 'flex-start',
             display: "block",
+
           }}>
           <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
             <ListSubheader component="div">Explore A Source</ListSubheader>

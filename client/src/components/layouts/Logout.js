@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { thunks } from '../../store/auth';
 import Login from './login';
+import { Button } from '@material-ui/core';
 
 function LogoutButton() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function LogoutButton() {
   // }
   return (
     <div id="logout-button-holder">
-      <button onClick={logout}>Logout</button>
+      <Button onClick={logout}>Logout</Button>
     </div>
   );
 }

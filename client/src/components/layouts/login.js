@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { tryLogin, actions } from '../../store/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn(props) {
   const classes = useStyles();
+  const history = useHistory();
 
   const dispatch = useDispatch();
   // const {email} = useSelector(state => state.email);
@@ -61,22 +63,17 @@ export default function SignIn(props) {
   const updateEmailValue = e => setEmail(e.target.value);
   const updatePasswordValue = e => setPassword(e.target.value);
 
-  // const updateEmailValue = (e) => {
-
-  //   return setEmail(e.target.value)
-  //   // console.log(email);
-  //   // dispatch(actions.updateEmailValue(email))
-  //   // dispatch(actions.updateEmailValue)
-  // }
-  // const updatePasswordValue = (e) => {
-  //   return setPassword(e.target.value)
-  //   // dispatch(actions.updatePasswordValue(password))
-  // }
   const login = async (e) => {
     e.preventDefault()
     dispatch(actions.updateEmailValue());
     dispatch(actions.updatePasswordValue());
     dispatch(tryLogin(email, password));
+    history.push('/news');
+  }
+  const demoLogin = async (e) => {
+    e.preventDefault()
+    dispatch(tryLogin("demo@example.com", "password"));
+    history.push('/news');
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -136,8 +133,15 @@ export default function SignIn(props) {
               </Link>
             </Grid> */}
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link href variant="body2">
                 {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid container style={{ marginTop: 15 }}>
+            <Grid item>
+              <Link onClick={demoLogin} href='/news' variant="body2">
+                {"Or Sign in as Demo User"}
               </Link>
             </Grid>
           </Grid>

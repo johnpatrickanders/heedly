@@ -55,6 +55,7 @@ function App(props) {
                     signedIn={signedIn}
                     component={ExpandSource}
                 />
+                <Route exact path="/"> <Login /></Route>
                 <Route exact path="/login"> <Login /></Route>
                 <Route exact path="/signup"> <SignUp /></Route>
                 <Route path="/logout"> <Logout /> </Route>

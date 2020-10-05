@@ -60,7 +60,9 @@ export default props => {
                 title={
                   <Link to={`/sources/${tile.id}`} style={{ fontSize: 20, color: 'white', textDecoration: 'none' }}>
                     <Typography overflowWrap='true' paragraph={true}>
-                      {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
+                      <p>
+                        {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
+                      </p>
                     </Typography>
                   </Link>}
               />

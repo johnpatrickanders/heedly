@@ -5,6 +5,7 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../layouts/Header';
 import { Icon, IconButton } from '@material-ui/core/';
 import { thunks } from '../../store/marks';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const style = {
   Paper: {
@@ -23,15 +24,9 @@ const style = {
 const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
-  console.log(history)
-  if (history.location.pathname === '/reads') {
-    console.log("WOAH")
-    return <h1>HI</h1>
-  }
-  const markAsRead = () => {
+  const deleteRead = () => {
     // console.log('content:', article.title)
-    dispatch(thunks.dispatchArticleMark({ article, userId }))
+    dispatch(thunks.dispatchDeleteArticleMark({ url: article.url, userId }))
   }
   return (
     <IconButton
@@ -39,11 +34,11 @@ const MyCustomButton = ({ article, userId }) => {
       color="inherit"
       style={{ fontSize: 30, marginTop: 15, display: 'block' }}
     >
-      <Icon onClick={markAsRead}
+      <Icon onClick={deleteRead}
         className={classes.icon}
         style={{ fontSize: 30, display: 'block' }}
         fullWidth='true'
-      >add_circle</Icon>
+      ><HighlightOffIcon /></Icon>
     </IconButton>
   )
 }

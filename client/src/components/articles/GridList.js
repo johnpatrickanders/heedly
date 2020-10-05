@@ -54,10 +54,14 @@ export default function TitlebarGridList(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const viewArticle = ({ tile }) => {
+  const viewArticle = ({ tile, reads }) => {
     console.log('article clicked...');
     dispatch(thunks.getArticleContent(tile));
-    history.push('/expand-article')
+    if (reads) {
+      history.push('/expand-read');
+    } else {
+      history.push('/expand-article');
+    }
   }
   // debugger;
 
@@ -69,7 +73,7 @@ export default function TitlebarGridList(props) {
           <ListSubheader component="div">{props.subTitle}</ListSubheader>
         </GridListTile>
         {props.articles.map((tile) => (
-          <GridListTile key={tile.title} onClick={() => viewArticle({ tile })}>
+          <GridListTile key={tile.title} onClick={() => viewArticle({ tile, reads: props.reads })}>
             <img src={tile.img} alt={tile.description} />
             <GridListTileBar
               title={tile.title}

@@ -32,7 +32,7 @@ export default function (props) {
 
 
   return (
-    <ArticleList articles={myReads.articles} subTitle={"My Reads:"}>
+    <ArticleList reads={true} articles={myReads.articles} subTitle={"My Reads:"}>
 
     </ArticleList >
   )

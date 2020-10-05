@@ -6,6 +6,7 @@ const newsapi = new NewsAPI(process.env.API_KEY);
 const express = require('express');
 const newsRouter = express.Router();
 const { User, UserHeed, UserMark } = require('../../db/models');
+const Sequelize = require('sequelize');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 
@@ -119,6 +120,18 @@ newsRouter.put('/mark', asyncHandler(async (req, res) => {
   res.json({ articles })
 }))
 
+newsRouter.delete('/mark', asyncHandler(async (req, res) => {
+  const { userId, url } = req.body;
+  console.log(`deleting where id is ${userId} and url is ${url}`);
+  await UserMark.destroy({
+    where: {
+      userId,
+      userHeedId: url
+    }
+  })
+  res.json({ message: 'the article was removed from your reads' })
+}))
+
 async function getReadsById(userId) {
   return await UserHeed.findAll({
     include: [{
@@ -129,6 +142,15 @@ async function getReadsById(userId) {
     }],
   });
 }
+
+// async function rankArticles() {
+//   return await UserMark.findAll({
+//     attributes: [
+//       'id', 'rating',
+//       [Sequelize.literal('(RANK() OVER (ORDER BY rating DESC))'), 'rank']
+// ]
+//   })
+// }
 
 async function one(id) {
   const pokemon = await Pokemon.findByPk(id, {

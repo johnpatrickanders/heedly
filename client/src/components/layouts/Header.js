@@ -14,6 +14,7 @@ import SearchButton from '../articles/SearchButton';
 import ReadsButton from '../articles/ReadsButton';
 import NewsButton from '../articles/NewsButton';
 import SourcesButton from '../articles/SourcesButton';
+import LogoutButton from './Logout';
 
 export const useStyles = makeStyles((theme) => ({
   grow: {
@@ -114,9 +115,10 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}><LogoutButton className="button" /></MenuItem>
+      <MenuItem onClick={handleMenuClose}><ReadsButton style={{ color: '#f50057' }} /></MenuItem>
     </Menu>
   );
 
@@ -177,14 +179,14 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography className={classes.title} variant="h6" noWrap>
             Heedly
           </Typography>
@@ -193,7 +195,7 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -204,7 +206,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <SearchButton />
           <NewsButton />
-          <ReadsButton />
+          {/* <ReadsButton /> */}
           <SourcesButton />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

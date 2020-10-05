@@ -7,6 +7,7 @@ import { useStyles } from '../layouts/Header';
 import { Redirect, Route, Switch, Link } from 'react-router-dom';
 import MyReads from './Reads';
 
+
 const ReadsButton = () => {
   const classes = useStyles();
   // const dispatch = useDispatch();
@@ -14,13 +15,13 @@ const ReadsButton = () => {
   // const runSearch = () => dispatch(thunks.fetchSearchQuery(searchString));
   const handleClick = () => {
     return (
-      <Link exact to="/reads"><MyReads /></Link>
+      <Button exact to="/reads"><MyReads /></Button>
     )
   }
   return (
     <Button color='inherit' className={classes.title}>
       <Link
-        style={{ color: 'white', textDecoration: 'none' }} className={classes.title} exact to="/reads">My Reads
+        style={{ textDecoration: 'none' }} className={classes.title} exact to="/reads">My Reads
       </Link>
     </Button>
   )

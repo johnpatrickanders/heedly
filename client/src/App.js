@@ -17,6 +17,7 @@ import ExpandSource from './components/articles/ExpandSource';
 import MouseOverPopover from './components/layouts/PopOver';
 import Sources from './components/articles/Sources';
 import SignUp from './components/layouts/Signup';
+import ExpandRead from './components/articles/ExpandRead';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -68,9 +69,12 @@ function App(props) {
                 <PrivateRoute path="/reads"
                     signedIn={signedIn}
                     component={MyReads} />
-                <PrivateRoute path="/expand-article"
+                <PrivateRoute exact path="/expand-article"
                     signedIn={signedIn}
                     component={ExpandArticle} />
+                <PrivateRoute exact path="/expand-read"
+                    signedIn={signedIn}
+                    component={ExpandRead} />
             </Switch>
             {/* <MyGrid></MyGrid> */}
             {/* <ExpandArticle></ExpandArticle> */}

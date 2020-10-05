@@ -120,6 +120,18 @@ newsRouter.put('/mark', asyncHandler(async (req, res) => {
   res.json({ articles })
 }))
 
+newsRouter.delete('/mark', asyncHandler(async (req, res) => {
+  const { userId, url } = req.body;
+  console.log(`deleting where id is ${userId} and url is ${url}`);
+  await UserMark.destroy({
+    where: {
+      userId,
+      userHeedId: url
+    }
+  })
+  res.json({ message: 'the article was removed from your reads' })
+}))
+
 async function getReadsById(userId) {
   return await UserHeed.findAll({
     include: [{

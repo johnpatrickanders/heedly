@@ -6,8 +6,8 @@ const helmet = require('helmet');
 const path = require('path');
 const logger = require('morgan');
 // const csurf = require('csurf');
-const dotenv = require('dotenv');
-dotenv.config();
+// const dotenv = require('dotenv');
+// dotenv.config();
 const routes = require('./routes');
 const { getUserFromToken } = require('./auth');
 

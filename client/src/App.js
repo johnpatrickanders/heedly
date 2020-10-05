@@ -38,10 +38,10 @@ function App(props) {
             <Header></Header>
             <nav>
                 <ul>
-                    <li><NavLink to="/" >Home</NavLink></li>
+                    {/*<li><NavLink to="/" >Home</NavLink></li>
                     <li><NavLink to="/login" >Login</NavLink></li>
                     <li><NavLink to="/logout" >Logout</NavLink></li>
-                    {/* <li><NavLink to="/news" >News</NavLink></li>
+                     <li><NavLink to="/news" >News</NavLink></li>
                     <li><NavLink to="/reads" >My Reads</NavLink></li> */}
                 </ul>
             </nav>

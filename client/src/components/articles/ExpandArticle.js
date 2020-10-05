@@ -55,10 +55,6 @@ export default props => {
   }
   const article = pageLoad.article;
 
-
-
-
-
   return (
 
     <Typography className={classes.title + "," + classes.colorSecondary} variant="h6">

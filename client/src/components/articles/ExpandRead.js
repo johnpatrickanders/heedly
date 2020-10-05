@@ -24,9 +24,11 @@ const style = {
 const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const deleteRead = () => {
     // console.log('content:', article.title)
-    dispatch(thunks.dispatchDeleteArticleMark({ url: article.url, userId }))
+    dispatch(thunks.dispatchDeleteArticleMark({ url: article.url, userId }));
+    history.push('/reads')
   }
   return (
     <IconButton

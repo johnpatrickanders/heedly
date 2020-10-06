@@ -1,5 +1,3 @@
-const dotenv = require('dotenv');
-dotenv.config();
 const { asyncHandler } = require('../utils/utils');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.API_KEY);

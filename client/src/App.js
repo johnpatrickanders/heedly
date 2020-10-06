@@ -37,15 +37,7 @@ function App(props) {
     return (
         <BrowserRouter>
             <Header></Header>
-            <nav>
-                <ul>
-                    {/*<li><NavLink to="/" >Home</NavLink></li>
-                    <li><NavLink to="/login" >Login</NavLink></li>
-                    <li><NavLink to="/logout" >Logout</NavLink></li>
-                     <li><NavLink to="/news" >News</NavLink></li>
-                    <li><NavLink to="/reads" >My Reads</NavLink></li> */}
-                </ul>
-            </nav>
+            <Login />
             <Switch>
                 <PrivateRoute exact path="/sources"
                     signedIn={signedIn}
@@ -55,7 +47,7 @@ function App(props) {
                     signedIn={signedIn}
                     component={ExpandSource}
                 />
-                <Route path="/" component={Login}></Route>
+                {/* <Route path="/" component={Login}></Route> */}
                 <Route exact path="/login"> <Login /></Route>
                 <Route exact path="/signup"> <SignUp /></Route>
                 <Route path="/logout"> <Logout /> </Route>

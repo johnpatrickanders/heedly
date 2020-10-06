@@ -37,7 +37,6 @@ function App(props) {
     return (
         <BrowserRouter>
             <Header></Header>
-            <Login />
             <Switch>
                 <PrivateRoute exact path="/sources"
                     signedIn={signedIn}

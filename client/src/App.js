@@ -55,7 +55,7 @@ function App(props) {
                     signedIn={signedIn}
                     component={ExpandSource}
                 />
-                <Route exact path="/"> <Login /></Route>
+                <Route path="/"> <Login /></Route>
                 <Route exact path="/login"> <Login /></Route>
                 <Route exact path="/signup"> <SignUp /></Route>
                 <Route path="/logout"> <Logout /> </Route>
@@ -76,6 +76,7 @@ function App(props) {
                 <PrivateRoute exact path="/expand-read"
                     signedIn={signedIn}
                     component={ExpandRead} />
+                <Route path="*"> <Login /></Route>
             </Switch>
             {/* <MyGrid></MyGrid> */}
             {/* <ExpandArticle></ExpandArticle> */}

@@ -32,6 +32,7 @@ function App(props) {
         <BrowserRouter>
             <Header></Header>
             <Switch>
+                <Route exact path="/"> <Login /></Route>
                 <PrivateRoute exact path="/sources"
                     signedIn={signedIn}
                     component={Sources}

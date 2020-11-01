@@ -5,14 +5,12 @@ const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
 const logger = require('morgan');
-// const csurf = require('csurf');
 if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv');
   dotenv.config();
 
 }
 const routes = require('./routes');
-const { getUserFromToken } = require('./auth');
 
 const app = express();
 app.use(logger('dev'));
@@ -26,26 +24,6 @@ app.use(cookieParser());
 // Security Middleware
 app.use(cors({ origin: true }));
 app.use(helmet({ hsts: false }));
-// app.use(csurf({
-//   cookie: {
-//     secure: process.env.NODE_ENV === 'production',
-//     sameSite: process.env.NODE_ENV === 'production',
-//     httpOnly: true
-//   }
-// }));
-
-//JWT check
-// app.use(async (req, res, next) => {
-//   const token = req.cookies.token;
-//   console.log("I'm working, I'm checking the token...")
-//   if (!token) return next();
-
-//   console.log("There's a token!")
-//   const user = await getUserFromToken(token, res);
-//   if (user) req.user = user;
-//   else res.clearCookie('token');
-//   next();
-// });
 
 app.use(routes);
 

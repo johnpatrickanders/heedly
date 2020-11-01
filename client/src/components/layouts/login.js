@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { tryLogin, actions } from '../../store/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -42,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -55,10 +53,8 @@ export default function SignIn(props) {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  // const {email} = useSelector(state => state.email);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
 
   const updateEmailValue = e => setEmail(e.target.value);
   const updatePasswordValue = e => setPassword(e.target.value);
@@ -73,7 +69,6 @@ export default function SignIn(props) {
   const demoLogin = async (e) => {
     e.preventDefault()
     dispatch(tryLogin("demo@example.com", "password"));
-    // history.push('/news');
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -112,12 +107,7 @@ export default function SignIn(props) {
             id="password"
             autoComplete="current-password"
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
           <Button
-            // onSubmit={}
             fullWidth
             variant="contained"
             color="primary"
@@ -127,11 +117,6 @@ export default function SignIn(props) {
             Sign In
           </Button>
           <Grid container>
-            {/* <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid> */}
             <Grid item>
               <Link href='/signup' variant="body2">
                 {"Don't have an account? Sign Up"}

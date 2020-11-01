@@ -1,11 +1,7 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
-// import { thunks } from '../../store/news';
 import { useStyles } from '../layouts/Header';
-// import { dispatchArticleMark } from '../../store/marks';
-import { Redirect, Route, Switch, Link } from 'react-router-dom';
-import MyReads from './Reads';
+import { Link } from 'react-router-dom';
 
 const NewsButton = () => {
   const classes = useStyles();

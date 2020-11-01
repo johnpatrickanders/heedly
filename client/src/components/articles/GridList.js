@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -9,8 +9,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import { thunks } from '../../store/news';
-// import tileData from './tileData';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MouseOverPopover from '../layouts/PopOver';
 
 
@@ -21,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    // overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
@@ -33,23 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
 export default function TitlebarGridList(props) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -63,9 +43,7 @@ export default function TitlebarGridList(props) {
       history.push('/expand-article');
     }
   }
-  // debugger;
 
-  const stockImg = "https://cdn.pixabay.com/photo/2016/11/06/17/17/north-america-1803504_960_720.jpg"
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList} style={{ alignContent: 'flex-start' }}>

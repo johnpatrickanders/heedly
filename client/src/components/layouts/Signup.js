@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -40,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -58,7 +56,7 @@ export default function SignUp() {
     const confirmPassword = document.getElementById("confirmPassword").value;
     console.log("Making account for:", firstName, email, password, confirmPassword);
     const leaning = 3;
-    const res = await fetch('/api/signup', {
+    await fetch('/api/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, firstName, password, confirmPassword, leaning })
@@ -66,13 +64,6 @@ export default function SignUp() {
     history.push('/login')
   }
   const classes = useStyles();
-
-  // const [firstName, setFirstName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-
-
 
   return (
     <Container component="main" maxWidth="xs">
@@ -98,17 +89,6 @@ export default function SignUp() {
                 autoFocus
               />
             </Grid>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -118,7 +98,6 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-              // onChange={setEmail(document.getElementById("email"))}
               />
             </Grid>
             <Grid item xs={12}>
@@ -144,10 +123,6 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12}>
-              {/* <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              /> */}
             </Grid>
           </Grid>
           <Button
@@ -156,7 +131,6 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-          // onClick={signMeUp}
           >
             Sign Up
           </Button>

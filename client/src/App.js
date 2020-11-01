@@ -1,20 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Switch, Redirect, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import UserList from './components/UsersList';
-import { Header, Footer } from './components/layouts/index';
-import MyGrid from './components/articles/index';
+import Header from './components/layouts/Header';
 import Login from './components/layouts/login';
 import Logout from './components/layouts/Logout';
-import Test from './components/layouts/test';
-import { thunks } from './store/auth';
 import TopHeadlines from './components/articles/TopHeadlines';
 import { SearchResults } from './components/articles/SearchResults';
 import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
-import Home from './components/articles/Sources';
 import ExpandSource from './components/articles/ExpandSource';
-import MouseOverPopover from './components/layouts/PopOver';
 import Sources from './components/articles/Sources';
 import SignUp from './components/layouts/Signup';
 import ExpandRead from './components/articles/ExpandRead';
@@ -46,7 +40,6 @@ function App(props) {
                     signedIn={signedIn}
                     component={ExpandSource}
                 />
-                {/* <Route path="/" component={Login}></Route> */}
                 <Route exact path="/login"> <Login /></Route>
                 <Route exact path="/signup"> <SignUp /></Route>
                 <Route path="/logout"> <Logout /> </Route>
@@ -69,10 +62,6 @@ function App(props) {
                     component={ExpandRead} />
                 <Route path="*" component={Login}></Route>
             </Switch>
-            {/* <MyGrid></MyGrid> */}
-            {/* <ExpandArticle></ExpandArticle> */}
-            {/* <SearchResults /> */}
-            <Footer></Footer>
         </BrowserRouter>
     );
 }

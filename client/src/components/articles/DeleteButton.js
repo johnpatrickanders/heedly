@@ -1,6 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import { useStyles } from '../layouts/Header';
 import { Icon, IconButton } from '@material-ui/core/';
 import { thunks } from '../../store/marks';
@@ -9,7 +8,6 @@ export const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
   const dispatch = useDispatch()
   const markAsRead = () => {
-    // console.log('content:', article.title)
     dispatch(thunks.dispatchArticleMark({ article, userId }))
   }
   return (

@@ -75,14 +75,14 @@ function loadUser() {
     try {
       //gets the value from the cookie (index 0 is key, index 1 is the value)
       const payload = authToken.split(".")[1];
-      //conversa base54 encoded binary string into an ASCII string
+      //converts base54 encoded binary string into an ASCII string
       const decodedPayload = atob(payload);
       //converts from json to JS object
       const payloadObj = JSON.parse(decodedPayload);
       console.log(payloadObj)
       //destructure data
       const data = payloadObj;
-      //return user into as data (this will set the default state to the user)
+      //return user as data (this will set the default state to the user)
       return data;
     } catch (e) {
       //any errors then remove the cookie
@@ -98,9 +98,6 @@ export const thunks = {
   logout,
   loadUser
 };
-
-
-// const token = window.localStorage.getItem('REDUX_LECTURE_AUTH_TOKEN');
 
 
 export default function reducer(state = loadUser(), action) {

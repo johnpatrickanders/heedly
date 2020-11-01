@@ -4,7 +4,6 @@ import { Button } from '@material-ui/core';
 import { thunks } from '../../store/news';
 import { useStyles } from '../layouts/Header';
 import { Link } from 'react-router-dom';
-// import { dispatchArticleMark } from '../../store/marks';
 
 const SearchButton = () => {
   const classes = useStyles();

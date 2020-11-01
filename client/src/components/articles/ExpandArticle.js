@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../layouts/Header';
 import { Icon, IconButton } from '@material-ui/core/';
 import { thunks } from '../../store/marks';
@@ -30,7 +30,6 @@ const MyCustomButton = ({ article, userId }) => {
     return <h1>HI</h1>
   }
   const markAsRead = () => {
-    // console.log('content:', article.title)
     dispatch(thunks.dispatchArticleMark({ article, userId }))
   }
   return (
@@ -63,7 +62,7 @@ export default () => {
     <Typography className={classes.title + "," + classes.colorSecondary} variant="h6">
       <Paper style={style.Paper}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <img src={article.img} style={style.img}></img>
+        <img src={article.img} alt={article.title} style={style.img}></img>
         <MyCustomButton article={article} userId={userId} />
         <h3>
           {article.title}

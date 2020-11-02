@@ -2,9 +2,9 @@
 ​
 ## User Stories
 ------------
-1. As a typical user, I want to see the news most relevant to my insterests.
+1. As a typical user, I want to see the news most relevant to my interests.
 2. As a typical user, I want to save articles based on my interest so that I can reference them later.
-3. As a politically-minded user, I want to browse news based on who is highly recommending it so that I can stay informed of my group's and the other group's most essential media influences.
+3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
 ​
 ## Features - MVP
 --------------
@@ -22,7 +22,7 @@ Reads
 Bonus: Favorites
 Bonus: Search
 
-## Additional Features
+## Stretch Features (not completed)
 -------------------
 - [ ] Ability to mark article as what the other side should pay most attention to and view ranking of most HEEDed articles, one per 24hrs
 - [ ] Search for feeds sources
@@ -35,30 +35,35 @@ Bonus: Search
     - name
     - email
     - password hash
-    - political leaning (optional)
-    - heedOfTheDay (optional)
 ​
-2. Articles
-    - id 
-    - feed
-​
-3. Feeds
-    - cityId (belongsTo Cities.id)
-    - date & time
-    - venue/address
-    - name
+2. UserHeeds (i.e. Articles associated with user)
+    - id
+    - url
+    - content
+    - img
+    - publishedAt
+    - title
+    - author
     - description
-    - hostId (belongsTo Users.id)
-    - [additional feature] number of people attending
-    - [additional feature] limit number of people attending
+    - createdAt
+    - updatedAt
 ​
-4. Join Table - Read
-    - userId (belongsToMany Users.id)
-    - articleId (belongsToMany Articles.id)
+3. UserMarks (joins table between User and UserHeed)
+    - id
+    - userId
+    - userHeedId
+    - createdAt
+    - updatedAt
+​
+4. Leanings
+    - id
+    - politicalAffiliation
+    - createdAt
+    - updatedAt
 ​
 ​
 ## Pages & Routes
---------------
+-------------------
 ### Sign-Up
 -------
 - Form generated with `get` request, submit will `post` name, email, password, political leaning.
@@ -67,7 +72,7 @@ Bonus: Search
 ### Log-In
 ------
 - Form generated with `get` request, submit will `post` email & password.
-- Utilize Bcrypt for user authentication & authorization, as well as JWT.
+- Utilize Bcrypt for user authentication & authorization.
 ​
 ### Table of Articles
 ------------------
@@ -75,23 +80,11 @@ Bonus: Search
 - Clicking on article will bring you to article read page.
 - Ability to mark as read.
 ​
-### Event Details Page
-------------
-- Details generated with `get` request (attending users viewable as an additional feature).
-- Host user has the ability to cancel an event (`delete` Event row/entry).
-- User has the ability to join event (`post` request would generate an entry in the Joint Table).
-​
-### Dashboard of joined events/hosted events
-----------------------------------------
-- Table of joined/hosted events generated with `get` request.
-- Clicking on event will bring you to event details page.
-- [Additional feature] different styling of cell if hosted event.
-​
-### Bonus: Feeds selection showing sources based on genre
+### Bonus (not done): Feeds selection showing sources based on genre
 ------------------------------------------------------
 - Add to "Table of Articles" page.
 ​
-### Bonus: Ability to mark Article as HEED
+### Bonus (not done): Ability to mark Article as HEED
 -----------------------------------------------------------
 - Users to mark an article from END of article view.
 - Display ranking of most HEEDed articles

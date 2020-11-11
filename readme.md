@@ -1,6 +1,10 @@
-# FEATURES TEMPLATE - heedly
+# Heedly
 ​
-![](heedly.png)
+# Table of Contents
+* [Technologies](#technologies)
+
+# <a name="technologies"></a>Technologies
+* "J. Jesus. P. Aguinaga" <admin@listforks.com>
 
 ## Technologies
 - JavaScript
@@ -10,6 +14,7 @@
 - HTML5 / CSS3
 - Material-UI
 - Sequelize
+![](heedly.png)
 
 ## User Stories
 ------------
@@ -23,6 +28,7 @@
     - [ ] Log-in page where users provide their email and password to log into the site
 - [ ] A viewable feed of top news articles from the Feedly API
 - [ ] Ability to click on item in feed to view article
+![](heedly-article.png)
 - [ ] Ability to mark article as read or unread
     - [ ] Read page that renders a list of read articles
 ​

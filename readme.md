@@ -3,9 +3,7 @@
 # Table of Contents
 * [Technologies](#technologies)
 
-# <a name="technologies"></a>Technologies
-
-## Technologies
+## <a name="technologies"></a>Technologies
 - JavaScript
 - React
 - Express

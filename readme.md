@@ -1,6 +1,16 @@
 # FEATURES TEMPLATE - heedly
 ​
 ![](heedly.png)
+
+## Technologies
+- JavaScript
+- React
+- Express
+- Redux
+- HTML5 / CSS3
+- Material-UI
+- Sequelize
+
 ## User Stories
 ------------
 1. As a typical user, I want to see the news most relevant to my interests.

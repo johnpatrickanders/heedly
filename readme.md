@@ -4,7 +4,6 @@
 * [Technologies](#technologies)
 
 # <a name="technologies"></a>Technologies
-* "J. Jesus. P. Aguinaga" <admin@listforks.com>
 
 ## Technologies
 - JavaScript

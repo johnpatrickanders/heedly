@@ -1,5 +1,6 @@
 # FEATURES TEMPLATE - heedly
 ​
+![](heedly.png)
 ## User Stories
 ------------
 1. As a typical user, I want to see the news most relevant to my interests.

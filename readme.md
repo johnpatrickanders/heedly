@@ -82,7 +82,6 @@
 ​
 ​
 ## <a name="frontend-routes"></a>Frontend Routes
--------------------
 ### /signup
 -------
 - Form generated with `get` request, submit will `post` name, email, password, political leaning.
@@ -101,6 +100,12 @@
 ### /expand-article
 ------
 - View a selected article's content
+​
+## <a name="api-routes"></a>API Routes
+### /users (GET, DELETE)
+### /users/token (POST)
+### /users/signup (POST)
+### /users/login (PUT, POST)
 ​
 ### Bonus (not done): Feeds selection showing sources based on genre
 ------------------------------------------------------

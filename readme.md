@@ -27,7 +27,7 @@
 2. As a typical user, I want to save articles based on my interest so that I can reference them later.
 3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
 ​
-## <a name="technologies"></a>Features - MVP
+## <a name="feature-list"></a>Features - MVP
 --------------
 - [ ] Sign-Up page where users submit their name, email, password, and political leaning
     - [ ] Log-in page where users provide their email and password to log into the site
@@ -42,6 +42,11 @@
 - [ ] Ability to mark article as what the other side should pay most attention to and view ranking of most HEEDed articles, one per 24hrs
 - [ ] Search for feeds sources
 - [ ] Ability to mark article as favorite and show favorites
+​
+## <a name ="react-components"></a>React Components
+- BrowserRouter, Switch, Redirect, NavLink, from react-router-dom
+- Basic hooks including useEffect, useState, useSelector, useDispatch, useHistory
+- GridList/GridListTile, Paper, Icon, Popover, Typography & more from Material-UI React library
 ​
 ## <a name="database-schema"></a>Database Schema
 ------

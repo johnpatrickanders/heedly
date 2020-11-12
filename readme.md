@@ -3,7 +3,7 @@
 ## Table of Contents
 * [Technologies](#technologies)
 * [User Stories](#user-stories)
-* [Feature List] (#feature-list)
+* [Feature List](#feature-list)
 * [React Components](#react-components)
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)

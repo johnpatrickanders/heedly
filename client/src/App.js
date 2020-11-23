@@ -13,6 +13,18 @@ import Sources from './components/articles/Sources';
 import SignUp from './components/layouts/Signup';
 import ExpandRead from './components/articles/ExpandRead';
 
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        secondary: {
+            main: '#E33E7F'
+        },
+        primary: {
+            main: '#1F9EA9'
+        }
+    }
+});
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
@@ -30,39 +42,41 @@ function App(props) {
 
     return (
         <BrowserRouter>
-            <Header></Header>
-            <Switch>
-                <Route exact path="/"> <Login /></Route>
-                <PrivateRoute exact path="/sources"
-                    signedIn={signedIn}
-                    component={Sources}
-                />
-                <PrivateRoute exact path="/sources/:sourceId"
-                    signedIn={signedIn}
-                    component={ExpandSource}
-                />
-                <Route exact path="/login"> <Login /></Route>
-                <Route exact path="/signup"> <SignUp /></Route>
-                <Route path="/logout"> <Logout /> </Route>
-                <PrivateRoute exact path="/news"
-                    signedIn={signedIn}
-                    component={TopHeadlines}
-                />
-                <PrivateRoute exact path="/search"
-                    signedIn={signedIn}
-                    component={SearchResults}
-                />
-                <PrivateRoute exact path="/reads"
-                    signedIn={signedIn}
-                    component={MyReads} />
-                <PrivateRoute exact path="/expand-article"
-                    signedIn={signedIn}
-                    component={ExpandArticle} />
-                <PrivateRoute exact path="/expand-read"
-                    signedIn={signedIn}
-                    component={ExpandRead} />
-                <Route path="*" component={Login}></Route>
-            </Switch>
+            <MuiThemeProvider theme={theme}>
+                <Header></Header>
+                <Switch>
+                    <Route exact path="/"> <Login /></Route>
+                    <PrivateRoute exact path="/sources"
+                        signedIn={signedIn}
+                        component={Sources}
+                    />
+                    <PrivateRoute exact path="/sources/:sourceId"
+                        signedIn={signedIn}
+                        component={ExpandSource}
+                    />
+                    <Route exact path="/login"> <Login /></Route>
+                    <Route exact path="/signup"> <SignUp /></Route>
+                    <Route path="/logout"> <Logout /> </Route>
+                    <PrivateRoute exact path="/news"
+                        signedIn={signedIn}
+                        component={TopHeadlines}
+                    />
+                    <PrivateRoute exact path="/search"
+                        signedIn={signedIn}
+                        component={SearchResults}
+                    />
+                    <PrivateRoute exact path="/reads"
+                        signedIn={signedIn}
+                        component={MyReads} />
+                    <PrivateRoute exact path="/expand-article"
+                        signedIn={signedIn}
+                        component={ExpandArticle} />
+                    <PrivateRoute exact path="/expand-read"
+                        signedIn={signedIn}
+                        component={ExpandRead} />
+                    <Route path="*" component={Login}></Route>
+                </Switch>
+            </MuiThemeProvider>
         </BrowserRouter>
     );
 }

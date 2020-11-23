@@ -11,8 +11,11 @@ import ReadsButton from '../articles/ReadsButton';
 import NewsButton from '../articles/NewsButton';
 import SourcesButton from '../articles/SourcesButton';
 import LogoutButton from './Logout';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 
 export const useStyles = makeStyles((theme) => ({
+
   grow: {
     flexGrow: 1,
   },

@@ -2,13 +2,13 @@ const { asyncHandler } = require('../utils/utils');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.API_KEY);
 const express = require('express');
-const newsRouter = express.Router();
+const router = express.Router();
 const { User, UserHeed, UserMark } = require('../../db/models');
 const Sequelize = require('sequelize');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 
-newsRouter.get('/', asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
   const topHeadlines = await newsapi.v2.topHeadlines({
     country: 'us',
     language: 'en',
@@ -19,7 +19,7 @@ newsRouter.get('/', asyncHandler(async (req, res) => {
   res.json({ topHeadlines });
 }))
 
-newsRouter.put('/search', asyncHandler(async (req, res) => {
+router.put('/search', asyncHandler(async (req, res) => {
   const searchString = req.body.searchString.search;
   // console.log(req, searchString)
   const topHeadlines = await newsapi.v2.everything({
@@ -32,7 +32,7 @@ newsRouter.put('/search', asyncHandler(async (req, res) => {
   res.json({ topHeadlines });
 }))
 
-newsRouter.get('/sources', asyncHandler(async (req, res) => {
+router.get('/sources', asyncHandler(async (req, res) => {
   // const source = req.body.source;
   // console.log(req, source)
   const sources = await newsapi.v2.sources({
@@ -45,7 +45,7 @@ newsRouter.get('/sources', asyncHandler(async (req, res) => {
   res.json({ sources });
 }))
 
-newsRouter.put('/sources', asyncHandler(async (req, res) => {
+router.put('/sources', asyncHandler(async (req, res) => {
   const { sourceId } = req.body;
   console.log(sourceId)
   const articlesBySource = await newsapi.v2.topHeadlines({
@@ -58,7 +58,7 @@ newsRouter.put('/sources', asyncHandler(async (req, res) => {
   res.json({ ...articlesBySource });
 }))
 
-newsRouter.post('/mark', asyncHandler(async (req, res) => {
+router.post('/mark', asyncHandler(async (req, res) => {
   const { userId, url,
     content, img, title, author,
     description, publishedAt } = req.body;
@@ -111,14 +111,14 @@ newsRouter.post('/mark', asyncHandler(async (req, res) => {
 }))
 
 
-newsRouter.put('/mark', asyncHandler(async (req, res) => {
+router.put('/mark', asyncHandler(async (req, res) => {
   const { userId } = req.body;
   console.log(userId)
   const articles = await getReadsById(userId);
   res.json({ articles })
 }))
 
-newsRouter.delete('/mark', asyncHandler(async (req, res) => {
+router.delete('/mark', asyncHandler(async (req, res) => {
   const { userId, url } = req.body;
   console.log(`deleting where id is ${userId} and url is ${url}`);
   await UserMark.destroy({
@@ -196,4 +196,4 @@ async function one(id) {
 //     }
 //   */
 // });
-module.exports = newsRouter;
+module.exports = router;

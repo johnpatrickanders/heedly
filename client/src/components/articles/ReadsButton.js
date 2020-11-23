@@ -11,7 +11,7 @@ const ReadsButton = () => {
   return (
     <Button color='inherit' className={classes.title}>
       <Link
-        style={{ textDecoration: 'none' }} className={classes.title} exact to="/reads">My Reads
+        style={{ color: 'white', textDecoration: 'none' }} className={classes.title} exact to="/reads">My Reads
       </Link>
     </Button>
   )

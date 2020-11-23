@@ -11,7 +11,6 @@ import ReadsButton from '../articles/ReadsButton';
 import NewsButton from '../articles/NewsButton';
 import SourcesButton from '../articles/SourcesButton';
 import LogoutButton from './Logout';
-import { createMuiTheme } from '@material-ui/core/styles';
 
 
 export const useStyles = makeStyles((theme) => ({
@@ -116,7 +115,6 @@ export default function PrimarySearchAppBar() {
 
     >
       <MenuItem onClick={handleMenuClose}><LogoutButton className="button" /></MenuItem>
-      <MenuItem onClick={handleMenuClose}><ReadsButton style={{ color: '#f50057' }} /></MenuItem>
     </Menu>
   );
 
@@ -173,6 +171,7 @@ export default function PrimarySearchAppBar() {
           <SearchButton />
           <NewsButton />
           <SourcesButton />
+          <ReadsButton />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton

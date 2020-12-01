@@ -11,39 +11,21 @@ const SearchButton = () => {
   const searchString = useSelector(state => state.news.searchString)
   const runSearch = () => {
     dispatch(thunks.fetchSearchQuery(searchString));
-    // dispatch(thunks.dispatchUpdateSearchQuery(''));
-  }
 
-  function handleEnter(e) {
-    if (e.key === 'Enter') {
-      console.log(e.target.value);
-      runSearch();
-    }
-    console.log('NOT ENTER')
   }
-  window.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      console.log("HIIIIIII");
-      runSearch();
-      // setSearchString('');
-    }
-  })
   return (
-    <form action='/search' method='get'>
-      <Button onSubmit={handleEnter}
-        color='inherit'
-        type='text'
-        onSubmit={runSearch}
-        onClick={runSearch}
-        className={classes.title}>
-        <Link
-          style={{ color: 'white', textDecoration: 'none' }}
-          className={classes.title}
-          exact to="/search">
-          Search
+    <Button
+      color='inherit'
+      type='text'
+      onClick={runSearch}
+      className={classes.title}>
+      <Link
+        style={{ color: 'white', textDecoration: 'none' }}
+        className={classes.title}
+        exact to="/search">
+        Search
       </Link>
-      </Button>
-    </form>
+    </Button>
   )
 }
 

@@ -143,32 +143,22 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
   const dispatch = useDispatch();
-  // const [_searchString, setSearchString] = useState('');
-  // const searchString = useSelector(state => state.news.searchString)
-  // window.addEventListener('keypress', (e) => {
-  //   if (e.key === 'Enter') {
-  //     console.log("HIIIIIII");
-  //     dispatch(thunks.fetchSearchQuery(searchString));
-  //     // setSearchString('');
-  //   }
-  // })
+
   const updateSearchState = (e) => {
-    if (e.key === 'Enter') return;
-    // setSearchString(e.target.value);
     dispatch(thunks.dispatchUpdateSearchQuery(e.target.value));
   }
 
-  // useEffect(() => {
-  // function onKeyDown(e) {
-  //   if (e.key === 'Enter') {
-  //     console.log(e.target.value);
-  //     dispatch(thunks.dispatchUpdateSearchQuery(_searchString));
-  // }
-  // window.removeEventListener('keyup', onKeyDown);
-  // }
-  // window.addEventListener('keydown', onKeyDown);
-  // return () =>
-  // }, []);
+  const searchString = useSelector(state => state.news.searchString)
+  const runSearch = () => {
+    dispatch(thunks.fetchSearchQuery(searchString));
+  }
+  function handleEnter(e) {
+    if (e.key === 'Enter') {
+      console.log(e.target.value);
+      runSearch();
+      e.target.value = '';
+    }
+  }
 
   return (
     <div className={classes.grow}>
@@ -183,6 +173,7 @@ export default function PrimarySearchAppBar() {
             </div>
             <InputBase
               placeholder="search…"
+              onKeyUp={handleEnter}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

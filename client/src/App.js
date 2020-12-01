@@ -5,7 +5,7 @@ import Header from './components/layouts/Header';
 import Login from './components/layouts/login';
 import Logout from './components/layouts/Logout';
 import TopHeadlines from './components/articles/TopHeadlines';
-import { SearchResults } from './components/articles/SearchResults';
+import ArticleGrid from './components/articles/TopHeadlines';
 import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
 import ExpandSource from './components/articles/ExpandSource';
@@ -63,7 +63,7 @@ function App(props) {
                     />
                     <PrivateRoute exact path="/search"
                         signedIn={signedIn}
-                        component={SearchResults}
+                        component={ArticleGrid}
                     />
                     <PrivateRoute exact path="/reads"
                         signedIn={signedIn}

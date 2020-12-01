@@ -144,19 +144,22 @@ export default function PrimarySearchAppBar() {
   );
   const dispatch = useDispatch();
 
+  const [input, setInput] = useState('');
+
   const updateSearchState = (e) => {
     dispatch(thunks.dispatchUpdateSearchQuery(e.target.value));
   }
 
   const searchString = useSelector(state => state.news.searchString)
   const runSearch = () => {
+    console.log('try')
     dispatch(thunks.fetchSearchQuery(searchString));
   }
   function handleEnter(e) {
     if (e.key === 'Enter') {
-      console.log(e.target.value);
       runSearch();
       e.target.value = '';
+      setInput('');
     }
   }
 
@@ -179,10 +182,15 @@ export default function PrimarySearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-              onChange={updateSearchState}
+              onChange={e => {
+                setInput(e.target.value);
+                updateSearchState(e);
+              }
+              }
+              value={input}
             />
           </div>
-          <SearchButton />
+          <SearchButton setInput={setInput} />
           <NewsButton />
           <SourcesButton />
           <ReadsButton />

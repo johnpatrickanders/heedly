@@ -71,70 +71,91 @@ export default function SignIn(props) {
     dispatch(tryLogin("demo@example.com", "password"));
   }
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
+    <div style={{ display: 'flex', flexDirection: 'row', justifyItems: 'flex-start', alignContent: 'flex-start' }}>
+      <Container component='main' className={classes.paper}
+        maxWidth='xs'
+      >
+        <CssBaseline />
+        <img src='podium_cut.png'
+          style={{
+            maxHeight: '60vh',
+            maxWidth: '50vw',
+            margin: 'auto',
+            top: '50%',
+            left: '50%',
+            border: '3px',
+            strokeWeight: '2px',
+            borderRadius: '3px',
+            storke: 'black'
+          }}>
+        </img>
+      </Container>
+
+      <Container component="main" maxWidth="xs" >
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            value={email}
-            onChange={updateEmailValue}
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            value={password}
-            onChange={updatePasswordValue}
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={login}
-          >
-            Sign In
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              value={email}
+              onChange={updateEmailValue}
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              value={password}
+              onChange={updatePasswordValue}
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={login}
+            >
+              Sign In
           </Button>
-          <Grid container>
-            <Grid item>
-              <Link href='/signup' variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+            <Grid container>
+              <Grid item>
+                <Link href='/signup' variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container style={{ marginTop: 15 }}>
-            <Grid item>
-              <Link onClick={demoLogin} href='/news' variant="body2">
-                {"Or Sign in as Demo User"}
-              </Link>
+            <Grid container style={{ marginTop: 15 }}>
+              <Grid item>
+                <Link onClick={demoLogin} href='/news' variant="body2">
+                  {"Or Sign in as Demo User"}
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+      </Container>
+    </div>
   );
 }

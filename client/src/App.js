@@ -43,7 +43,7 @@ function App(props) {
     return (
         <BrowserRouter>
             <MuiThemeProvider theme={theme}>
-                <Header></Header>
+                {signedIn ? <Header></Header> : null}
                 <Switch>
                     <Route exact path="/"> <Login /></Route>
                     <PrivateRoute exact path="/sources"

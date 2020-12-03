@@ -43,7 +43,6 @@ export default function TitlebarGridList(props) {
       history.push('/expand-article');
     }
   }
-
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList} style={{ alignContent: 'flex-start' }}>

@@ -43,9 +43,8 @@ const fetchSearchQuery = (searchString) => {
       const { topHeadlines } = await res.json();
       const articles = topHeadlines.articles;
       console.log('getting search results in store...', articles);
-      dispatch(updateSearchResults({
-        ...articles
-      }));
+      dispatch(updateSearchResults({ articles }));
+      // window.location.pathname = '/search';
     }
   }
 }
@@ -103,11 +102,14 @@ export const thunks = {
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_TOP_HEADLINES:
-      return action.value
+      return {
+        ...state,
+        ...action.value
+      }
     case UPDATE_SEARCH_RESULTS:
       return {
         ...state,
-        searchResults: action.value
+        ...action.value
       }
     case UPDATE_SEARCH_STRING:
       return {

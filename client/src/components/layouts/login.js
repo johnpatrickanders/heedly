@@ -17,13 +17,14 @@ import Container from '@material-ui/core/Container';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography style={{ marginTop: '22vh' }} variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Heedly
+      <Link color="textPrimary" href="http://john-anders.com">
+        John Anders
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
+
     </Typography>
   );
 }
@@ -94,8 +95,8 @@ export default function SignIn(props) {
           style={{
             textAlign: 'center',
             fontStyle: 'italic',
-            marginLeft: '15px',
-            marginTop: '20px'
+            marginLeft: '6vw',
+            marginTop: '2vh'
           }}>
           News the Mindful Way
         </Typography>

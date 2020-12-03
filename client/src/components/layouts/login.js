@@ -89,6 +89,16 @@ export default function SignIn(props) {
             storke: 'black'
           }}>
         </img>
+        <Typography component="h1"
+          variant="h4"
+          style={{
+            textAlign: 'center',
+            fontStyle: 'italic',
+            marginLeft: '15px',
+            marginTop: '20px'
+          }}>
+          News the Mindful Way
+        </Typography>
       </Container>
 
       <Container component="main" maxWidth="xs" >

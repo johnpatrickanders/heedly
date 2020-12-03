@@ -5,13 +5,13 @@ import Header from './components/layouts/Header';
 import Login from './components/layouts/login';
 import Logout from './components/layouts/Logout';
 import TopHeadlines from './components/articles/TopHeadlines';
-import ArticleGrid from './components/articles/TopHeadlines';
 import ExpandArticle from './components/articles/ExpandArticle';
 import MyReads from './components/articles/Reads';
 import ExpandSource from './components/articles/ExpandSource';
 import Sources from './components/articles/Sources';
 import SignUp from './components/layouts/Signup';
 import ExpandRead from './components/articles/ExpandRead';
+import SearchResults from './components/articles/SearchResults';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -63,7 +63,7 @@ function App(props) {
                     />
                     <PrivateRoute exact path="/search"
                         signedIn={signedIn}
-                        component={ArticleGrid}
+                        component={SearchResults}
                     />
                     <PrivateRoute exact path="/reads"
                         signedIn={signedIn}

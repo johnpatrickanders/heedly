@@ -1,25 +1,26 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { thunks } from '../../store/news';
 import TitleBarGridlist from './GridList';
 
 
 export default TopHeadlines => {
-  const location = useLocation();
+  let location = useLocation();
   const dispatch = useDispatch();
   let newsComponents;
+  const searchString = useSelector(state => state.news.searchString);
   useEffect(() => {
     (async () => {
-      dispatch(await thunks.getTopHeadlines());
+      dispatch(await thunks.fetchSearchQuery(searchString));
     })();
-  }, [location]);
-  const topNews = useSelector(state => state.news.articles);
-  if (!topNews) return null;
+  }, [location.pathname]);
+  const searchResults = useSelector(state => state.news.searchResults);
+  if (!searchResults) return null;
 
   const setImgUrls = async () => {
-    for (let i = 0; i < topNews.length; i++) {
-      let article = topNews[i];
+    for (let i = 0; i < searchResults.length; i++) {
+      let article = searchResults[i];
       let img = article.urlToImage;
       article.img = img;
     }
@@ -27,7 +28,7 @@ export default TopHeadlines => {
   setImgUrls();
 
   newsComponents = (
-    <TitleBarGridlist articles={topNews} subTitle={"Top News For Today:"}>
+    <TitleBarGridlist articles={searchResults} subTitle={"Top News For Today:"}>
 
     </TitleBarGridlist>
   )

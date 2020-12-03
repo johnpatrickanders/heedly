@@ -1,10 +1,12 @@
 const GET_TOP_HEADLINES = 'news/GET_TOP_HEADLINES';
+const UPDATE_SEARCH_RESULTS = 'news/UPDATE_SEARCH_RESULTS';
 const UPDATE_SEARCH_STRING = 'news/UPDATE_SEARCH_QUERY';
 const GET_ARTICLE_CONTENT = 'news/GET_ARTICLE_CONTENT';
 const GET_SOURCES = 'news/GET_SOURCES';
 const GET_ARTICLES_BY_SOURCE = 'news/GET_ARTICLES_BY_SOURCE';
 
 const updateTopHeadlinesValue = value => ({ type: GET_TOP_HEADLINES, value });
+const updateSearchResults = value => ({ type: UPDATE_SEARCH_RESULTS, value });
 const updateSearchString = value => ({ type: UPDATE_SEARCH_STRING, value });
 const updateArticleContent = value => ({ type: GET_ARTICLE_CONTENT, value });
 const getSources = value => ({ type: GET_SOURCES, value });
@@ -41,7 +43,8 @@ const fetchSearchQuery = (searchString) => {
       const { topHeadlines } = await res.json();
       const articles = topHeadlines.articles;
       console.log('getting search results in store...', articles);
-      dispatch(updateTopHeadlinesValue({ articles }));
+      dispatch(updateSearchResults({ searchResults: articles }));
+      // window.location.pathname = '/search';
     }
   }
 }
@@ -99,7 +102,15 @@ export const thunks = {
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_TOP_HEADLINES:
-      return action.value;
+      return {
+        ...state,
+        ...action.value
+      }
+    case UPDATE_SEARCH_RESULTS:
+      return {
+        ...state,
+        ...action.value
+      }
     case UPDATE_SEARCH_STRING:
       return {
         ...state,

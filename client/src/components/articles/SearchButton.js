@@ -5,10 +5,11 @@ import { thunks } from '../../store/news';
 import { useStyles } from '../layouts/Header';
 import { Link } from 'react-router-dom';
 
-const SearchButton = ({ setInput }) => {
+const SearchButton = ({ setInput, searchString }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const searchString = useSelector(state => state.news.searchString)
+  // const searchString = useSelector(state => state.news.searchString);
+  // debugger
   const runSearch = () => {
     dispatch(thunks.fetchSearchQuery(searchString));
 
@@ -18,6 +19,8 @@ const SearchButton = ({ setInput }) => {
       color='inherit'
       type='text'
       onClick={() => {
+        console.log('SEARCH clicked')
+        console.log('- ' + searchString)
         runSearch()
         setInput('')
       }}
@@ -25,7 +28,8 @@ const SearchButton = ({ setInput }) => {
       <Link
         style={{ color: 'white', textDecoration: 'none' }}
         className={classes.title}
-        exact to="/search">
+        exact to="/search"
+      >
         Search
       </Link>
     </Button>

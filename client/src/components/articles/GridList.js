@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'white',
   },
   gridList: {
     width: 1000,

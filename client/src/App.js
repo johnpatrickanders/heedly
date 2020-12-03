@@ -45,7 +45,7 @@ function App(props) {
             <MuiThemeProvider theme={theme}>
                 {signedIn ? <Header></Header> : null}
                 <Switch>
-                    <Route exact path="/"> <Login /></Route>
+                    <Route exact path="/"> {signedIn ? <TopHeadlines /> : <Login />}</Route>
                     <PrivateRoute exact path="/sources"
                         signedIn={signedIn}
                         component={Sources}

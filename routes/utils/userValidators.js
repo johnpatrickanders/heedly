@@ -46,7 +46,6 @@ const userCreationValidators = [
     .custom((value, { req }) => {
       if (value !== req.body.password) {
         throw new Error('Confirm Password does not match Password');
-        console.log("ME")
       }
       return true;
     })

@@ -34,9 +34,7 @@ export const actions = {
 };
 
 export const tryLogin = (email, password) => {
-  console.log('Trying Login...')
   return async (dispatch) => {
-    console.log('Sending:', email, password);
     const response = await fetch('/api/login/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -47,24 +45,20 @@ export const tryLogin = (email, password) => {
       dispatch(setUser({ id, email }));
       window.location = '/news';
     } else {
-      console.error('Bad response');
     }
   }
 };
 
 
 const logout = () => async dispatch => {
-  console.log("Logging Out")
   const res = await fetch('/api', {
     method: "delete"
   });
   if (res.ok) {
     dispatch(removeUser());
     Cookies.remove('token');
-    console.log('Cookie removed!');
     return true;
   } else {
-    console.log('I couldn\'t log you out...');
     return false;
   }
 }
@@ -79,7 +73,6 @@ function loadUser() {
       const decodedPayload = atob(payload);
       //converts from json to JS object
       const payloadObj = JSON.parse(decodedPayload);
-      console.log(payloadObj)
       //destructure data
       const data = payloadObj;
       //return user as data (this will set the default state to the user)

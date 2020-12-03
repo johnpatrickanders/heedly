@@ -21,7 +21,6 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.put('/search', asyncHandler(async (req, res) => {
   const searchString = req.body.searchString.search;
-  // console.log(req, searchString)
   const topHeadlines = await newsapi.v2.everything({
     q: `${searchString}`,
     language: 'en',
@@ -34,7 +33,6 @@ router.put('/search', asyncHandler(async (req, res) => {
 
 router.get('/sources', asyncHandler(async (req, res) => {
   // const source = req.body.source;
-  // console.log(req, source)
   const sources = await newsapi.v2.sources({
     // q: `${source}`,
     language: 'en',
@@ -47,7 +45,6 @@ router.get('/sources', asyncHandler(async (req, res) => {
 
 router.put('/sources', asyncHandler(async (req, res) => {
   const { sourceId } = req.body;
-  console.log(sourceId)
   const articlesBySource = await newsapi.v2.topHeadlines({
     sources: `${sourceId}`,
     language: 'en',
@@ -65,7 +62,6 @@ router.post('/mark', asyncHandler(async (req, res) => {
 
 
   const alreadyInDb = await UserHeed.findByPk(url);
-  console.log("Already in db:", !!alreadyInDb);
   if (!alreadyInDb) {
     await UserHeed.create({
       url,
@@ -77,8 +73,6 @@ router.post('/mark', asyncHandler(async (req, res) => {
       publishedAt,
       description
     });
-    // console.log('userId:', userId);
-    // console.log('url:', url);
     const userMark = await UserMark.create({
       userId,
       userHeedId: url
@@ -92,7 +86,6 @@ router.post('/mark', asyncHandler(async (req, res) => {
       userHeedId: url
     }
   })
-  console.log("Already marked:", !!alreadyMarked)
   if (!alreadyMarked) {
     await UserMark.create({
       userId,
@@ -113,7 +106,6 @@ router.post('/mark', asyncHandler(async (req, res) => {
 
 router.put('/mark', asyncHandler(async (req, res) => {
   const { userId } = req.body;
-  console.log(userId)
   const articles = await getReadsById(userId);
   const sortedByMostRecent = articles.reverse();
   res.json({ articles: sortedByMostRecent })
@@ -121,7 +113,6 @@ router.put('/mark', asyncHandler(async (req, res) => {
 
 router.delete('/mark', asyncHandler(async (req, res) => {
   const { userId, url } = req.body;
-  console.log(`deleting where id is ${userId} and url is ${url}`);
   await UserMark.destroy({
     where: {
       userId,
@@ -154,7 +145,6 @@ async function getReadsById(userId) {
 //   language: 'en',
 //   country: 'us'
 // }).then(response => {
-//   console.log(response);
 //   /*
 //     {
 //       status: "ok",

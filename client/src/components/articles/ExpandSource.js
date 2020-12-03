@@ -5,8 +5,6 @@ import { thunks } from '../../store/news';
 
 export default function ({ match }) {
   const sourceId = match.params.sourceId;
-  console.log("Source:", sourceId)
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,8 +18,6 @@ export default function ({ match }) {
   const articlesBySource = useSelector(state => state.news.articlesBySource);
 
   if (!articlesBySource) return null;
-  console.log(articlesBySource.articles)
-
   const setImgUrls = async () => {
     for (let i = 0; i < articlesBySource.articles.length; i++) {
       let article = articlesBySource.articles[i];

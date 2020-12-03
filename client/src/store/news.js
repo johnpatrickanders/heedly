@@ -18,7 +18,6 @@ const getTopHeadlines = () => {
     if (res.ok) {
       const { topHeadlines } = await res.json();
       const articles = topHeadlines.articles;
-      console.log('getting top headlines in store...', articles);
       dispatch(updateTopHeadlinesValue({ articles }));
     }
   }
@@ -31,7 +30,6 @@ const dispatchUpdateSearchQuery = (search) => {
 }
 
 const fetchSearchQuery = (searchString) => {
-  console.log(searchString)
   return async (dispatch) => {
     const res = await fetch(`/api/news/search`, {
       method: 'PUT',
@@ -42,7 +40,6 @@ const fetchSearchQuery = (searchString) => {
     if (res.ok) {
       const { topHeadlines } = await res.json();
       const articles = topHeadlines.articles;
-      console.log('getting search results in store...', articles);
       dispatch(updateSearchResults({ searchResults: articles }));
       // window.location.pathname = '/search';
     }
@@ -50,7 +47,6 @@ const fetchSearchQuery = (searchString) => {
 }
 
 const getArticleContent = (article) => {
-  console.log('Storing content...');
   return (dispatch) => {
     dispatch(updateArticleContent({ article }))
   }
@@ -61,14 +57,12 @@ const dispatchGetSources = () => {
     const res = await fetch('/api/news/sources');
     if (res.ok) {
       const { sources: { sources } } = await res.json();
-      console.log('Your sources:', sources);
       dispatch(getSources({ ...sources }));
     }
   }
 }
 
 const dispatchArticlesBySource = (sourceId) => {
-  console.log(sourceId)
   return async (dispatch) => {
     const res = await fetch(`/api/news/sources`, {
       method: 'PUT',
@@ -78,7 +72,6 @@ const dispatchArticlesBySource = (sourceId) => {
     );
     if (res.ok) {
       const { articles } = await res.json();
-      console.log('getting articles by source...', articles);
       dispatch(getArticlesBySource({ articles }));
     }
   }

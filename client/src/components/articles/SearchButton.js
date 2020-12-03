@@ -19,8 +19,6 @@ const SearchButton = ({ setInput, searchString }) => {
       color='inherit'
       type='text'
       onClick={() => {
-        console.log('SEARCH clicked')
-        console.log('- ' + searchString)
         runSearch()
         setInput('')
       }}
@@ -28,7 +26,7 @@ const SearchButton = ({ setInput, searchString }) => {
       <Link
         style={{ color: 'white', textDecoration: 'none' }}
         className={classes.title}
-        exact to="/search"
+        exact="true" to="/search"
       >
         Search
       </Link>

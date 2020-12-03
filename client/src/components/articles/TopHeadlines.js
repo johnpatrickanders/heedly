@@ -32,7 +32,5 @@ export default TopHeadlines => {
     </TitleBarGridlist>
   )
 
-  return <div>
-    {newsComponents}
-  </div>
+  return newsComponents
 }

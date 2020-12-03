@@ -31,7 +31,6 @@ router.post('/token', asyncHandler(async (req, res, next) => {
         throw err;
     }
     const token = await getUserToken(user);
-    console.log("Token:", token);
     res.cookie('token', token, { maxAge: process.env.JWT_EXPIRES_IN * 1000 });
     res.json({ id: user.id, token });
 
@@ -44,10 +43,8 @@ router.post(
     // handleValidationErrors, // temporarily REMOVED csrfProtection
     asyncHandler(async (req, res, next) => {
         // res.status(401).json({ errors: ["NOPE"] })
-        console.log('signing up...')
         const { firstName, email, password, confirmPassword, leaning } = req.body;
 
-        console.log(firstName, email, password, confirmPassword, leaning);
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
@@ -87,14 +84,12 @@ router.post(
         if (validatorErrors.isEmpty()) {
             // Attempt to get the user by their email address.
             const user = await User.findOne({ where: { email: email } });
-            console.log(user)
 
             const token = await getUserToken(user);
             res.cookie('token', token);
             res.json({ id: user.id, email: user.email });
         } else {
             errors = validatorErrors.array().map(error => error.msg);
-            console.log('Error: password incorrect');
         }
     })
 );

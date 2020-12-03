@@ -11,7 +11,7 @@ const NewsButton = () => {
       <Link
         style={{ color: 'white', textDecoration: 'none' }}
         className={classes.title}
-        exact to="/news">
+        exact="true" to="/news">
         Breaking Now
       </Link>
     </Button>

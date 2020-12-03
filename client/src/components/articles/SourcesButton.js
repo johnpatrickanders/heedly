@@ -11,7 +11,7 @@ const SourcesButton = () => {
       <Link
         style={{ color: 'white', textDecoration: 'none' }}
         className={classes.title}
-        exact to="/sources">
+        exact="true" to="/sources">
         Sources
       </Link>
     </Button>

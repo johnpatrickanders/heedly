@@ -54,7 +54,6 @@ export default function SignUp() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
-    console.log("Making account for:", firstName, email, password, confirmPassword);
     const leaning = 3;
     await fetch('/api/signup', {
       method: 'POST',

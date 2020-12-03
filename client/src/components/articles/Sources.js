@@ -22,19 +22,18 @@ export default props => {
   const sources = useSelector(state => state.news.sources);
   if (!sources) return null;
   const arrOfSources = Object.values(sources);
-  console.log("sources for page:", sources)
-
-
 
   return (
-    <div alignSelf='center' className={classes.root} style={{ maxWidth: '99vw', justifyContent: 'center' }}>
-      <GridList cellHeight={180}
-        className={classes.gridList}
-        style={{
-          alignContent: 'flex-start',
-          display: "block",
-        }}>
-        <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
+    <div >
+      <GridList
+      // cellHeight={180}
+      // className={classes.gridList}
+      // style={{
+      //   alignContent: 'flex-start',
+      //   // display: "block",
+      // }}
+      >
+        <GridListTile key="Subheader" style={{ height: 'auto' }}>
           <ListSubheader component="div">
             <Typography variant="h3" color="textPrimary" style={{ marginLeft: '-19px', marginTop: '20px' }}>
               Explore by Source

@@ -19,7 +19,6 @@ export default function (props) {
   const myReads = useSelector(state => state.marks.reads);
 
   if (!myReads) return null;
-  console.log(myReads.articles);
 
   const setImgUrls = async () => {
     for (let i = 0; i < myReads.length; i++) {

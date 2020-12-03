@@ -10,7 +10,6 @@ const dispatchArticleMark = (articleAndUser) => {
   const userId = articleAndUser.userId;
   const article = articleAndUser.article;
 
-  console.log("I'm trying to dispatch the article:", article)
   return async (dispatch) => {
     const res = await fetch(`/api/news/mark`, {
       method: 'POST',
@@ -19,14 +18,12 @@ const dispatchArticleMark = (articleAndUser) => {
     });
     if (res.ok) {
       const { article } = await res.json();
-      console.log('your article is storing:', article);
       dispatch(createArticleMark({ article }));
     }
   }
 }
 
 const dispatchAllReads = (userId) => {
-  console.log("Getting all reads for user#:", userId)
   return async (dispatch) => {
     const res = await fetch(`/api/news/mark`, {
       method: 'PUT',
@@ -35,7 +32,6 @@ const dispatchAllReads = (userId) => {
     });
     if (res.ok) {
       const { articles } = await res.json();
-      console.log('your reads are storing:', articles);
       dispatch(getAllReads({ articles }));
     }
   }
@@ -44,7 +40,6 @@ const dispatchAllReads = (userId) => {
 const dispatchDeleteArticleMark = (articleAndUrl) => {
   const userId = articleAndUrl.userId;
   const url = articleAndUrl.url;
-  console.log("I'm trying to delete the mark:", url)
   return async (dispatch) => {
     const res = await fetch(`/api/news/mark`, {
       method: 'DELETE',
@@ -53,7 +48,6 @@ const dispatchDeleteArticleMark = (articleAndUrl) => {
     });
     if (res.ok) {
       const { message } = await res.json();
-      console.log(message);
       dispatch(deleteArticleMark());
       dispatch(dispatchAllReads(userId));
     }

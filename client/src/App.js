@@ -37,7 +37,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     )
 }
 
-function App(props) {
+function App() {
     const signedIn = useSelector((state) => state.auth.id)
 
     return (
@@ -45,33 +45,33 @@ function App(props) {
             <MuiThemeProvider theme={theme}>
                 {signedIn ? <Header></Header> : null}
                 <Switch>
-                    <Route exact path="/"> {signedIn ? <TopHeadlines /> : <Login />}</Route>
-                    <PrivateRoute exact path="/sources"
+                    <Route exact="true" path="/"> {signedIn ? <TopHeadlines /> : <Login />}</Route>
+                    <PrivateRoute exact="true" path="/sources"
                         signedIn={signedIn}
                         component={Sources}
                     />
-                    <PrivateRoute exact path="/sources/:sourceId"
+                    <PrivateRoute exact="true" path="/sources/:sourceId"
                         signedIn={signedIn}
                         component={ExpandSource}
                     />
-                    <Route exact path="/login"> <Login /></Route>
-                    <Route exact path="/signup"> <SignUp /></Route>
+                    <Route exact="true" path="/login"> <Login /></Route>
+                    <Route exact="true" path="/signup"> <SignUp /></Route>
                     <Route path="/logout"> <Logout /> </Route>
-                    <PrivateRoute exact path="/news"
+                    <PrivateRoute exact="true" path="/news"
                         signedIn={signedIn}
                         component={TopHeadlines}
                     />
-                    <PrivateRoute exact path="/search"
+                    <PrivateRoute exact="true" path="/search"
                         signedIn={signedIn}
                         component={SearchResults}
                     />
-                    <PrivateRoute exact path="/reads"
+                    <PrivateRoute exact="true" path="/reads"
                         signedIn={signedIn}
                         component={MyReads} />
-                    <PrivateRoute exact path="/expand-article"
+                    <PrivateRoute exact="true" path="/expand-article"
                         signedIn={signedIn}
                         component={ExpandArticle} />
-                    <PrivateRoute exact path="/expand-read"
+                    <PrivateRoute exact="true" path="/expand-read"
                         signedIn={signedIn}
                         component={ExpandRead} />
                     <Route path="*" component={Login}></Route>

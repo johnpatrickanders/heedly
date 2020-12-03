@@ -36,7 +36,6 @@ export default function TitlebarGridList(props) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const viewArticle = ({ tile, reads }) => {
-    console.log('article clicked...');
     dispatch(thunks.getArticleContent(tile));
     if (reads) {
       history.push('/expand-read');
@@ -46,10 +45,16 @@ export default function TitlebarGridList(props) {
   }
   return (
     <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList} style={{ alignContent: 'flex-start' }}>
-        <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
+      <GridList cellHeight={180}
+        className={classes.gridList}
+        style={{ alignContent: 'flex-start', marginTop: '10px' }}>
+        <GridListTile key="Subheader"
+          cols={3}
+          style={{ height: 'auto' }}>
           <ListSubheader component="div">
-            <Typography variant="h3" color="textPrimary" style={{ marginLeft: '-19px', marginTop: '20px' }}>
+            <Typography variant="h3"
+              color="textPrimary"
+              style={{ marginLeft: '-19px', marginTop: '20px' }}>
               {props.subTitle}
             </Typography>
           </ListSubheader>

@@ -6,7 +6,6 @@ router.use('/api', users);
 router.use('/api/news', news);
 
 router.get('/', (req, res) => {
-  console.log('home')
 })
 
 module.exports = router;

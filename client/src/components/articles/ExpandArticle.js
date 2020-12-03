@@ -24,9 +24,7 @@ const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(history)
   if (history.location.pathname === '/reads') {
-    console.log("WOAH")
     return <h1>HI</h1>
   }
   const markAsRead = () => {

@@ -115,7 +115,8 @@ router.put('/mark', asyncHandler(async (req, res) => {
   const { userId } = req.body;
   console.log(userId)
   const articles = await getReadsById(userId);
-  res.json({ articles })
+  const sortedByMostRecent = articles.reverse();
+  res.json({ articles: sortedByMostRecent })
 }))
 
 router.delete('/mark', asyncHandler(async (req, res) => {
@@ -141,42 +142,7 @@ async function getReadsById(userId) {
   });
 }
 
-// async function rankArticles() {
-//   return await UserMark.findAll({
-//     attributes: [
-//       'id', 'rating',
-//       [Sequelize.literal('(RANK() OVER (ORDER BY rating DESC))'), 'rank']
-// ]
-//   })
-// }
 
-async function one(id) {
-  const pokemon = await Pokemon.findByPk(id, {
-    include: ['items', 'player']
-  });
-
-  return {
-    attack: pokemon.attack,
-    defense: pokemon.defense,
-    id: pokemon.id,
-    imageUrl: pokemon.imageUrl,
-    name: pokemon.name,
-    type: pokemon.type,
-    moves: [...pokemon.moves],
-    items: pokemon.items.map(item => {
-      return {
-        name: item.name,
-        price: item.price,
-        happiness: item.happiness,
-        imageUrl: item.imageUrl,
-      };
-    }),
-    owner: {
-      id: pokemon.player.id,
-      name: pokemon.player.name,
-    },
-  };
-}
 
 
 // To query /v2/everything

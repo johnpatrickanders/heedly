@@ -17,15 +17,20 @@ import Container from '@material-ui/core/Container';
 
 function Copyright() {
   return (
-    <Typography style={{ marginTop: '22vh' }} variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="textPrimary" href="http://john-anders.com">
-        John Anders
+    <>
+      <Typography style={{ marginTop: '22vh' }} variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link href="http://john-anders.com">
+          John Anders
       </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-
-    </Typography>
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Public Vectors by '}
+        <Link color='textSecondary' href="https://www.vecteezy.com/free-vector/public">Vecteezy</Link>
+      </Typography>
+    </>
   );
 }
 
@@ -90,8 +95,10 @@ export default function SignIn(props) {
             storke: 'black'
           }}>
         </img>
-        <Typography component="h1"
+        <Typography
+          component="h1"
           variant="h4"
+          color='textSecondary'
           style={{
             textAlign: 'center',
             fontStyle: 'italic',

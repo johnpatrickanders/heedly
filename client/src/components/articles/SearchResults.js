@@ -28,7 +28,7 @@ export default TopHeadlines => {
   setImgUrls();
 
   newsComponents = (
-    <TitleBarGridlist articles={searchResults} subTitle={"Top News For Today:"}>
+    <TitleBarGridlist articles={searchResults} subTitle={`Showing results...`}>
 
     </TitleBarGridlist>
   )

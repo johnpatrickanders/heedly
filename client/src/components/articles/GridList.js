@@ -8,6 +8,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
+import Typography from '@material-ui/core/Typography';
 import { thunks } from '../../store/news';
 import MouseOverPopover from '../layouts/PopOver';
 
@@ -19,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 1000,
-    height: 1000,
+    width: '60vw',
+    height: '90vh',
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -47,7 +48,11 @@ export default function TitlebarGridList(props) {
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList} style={{ alignContent: 'flex-start' }}>
         <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
-          <ListSubheader component="div">{props.subTitle}</ListSubheader>
+          <ListSubheader component="div">
+            <Typography variant="h3" color="textPrimary" style={{ marginLeft: '-19px', marginTop: '20px' }}>
+              {props.subTitle}
+            </Typography>
+          </ListSubheader>
         </GridListTile>
         {props.articles.map((tile) => (
           <GridListTile key={tile.title} onClick={() => viewArticle({ tile, reads: props.reads })}>

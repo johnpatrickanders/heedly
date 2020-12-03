@@ -27,7 +27,7 @@ export default props => {
 
 
   return (
-    <div alignSelf='center' className={classes.root} style={{ maxWidth: '80vh', justifyContent: 'center' }}>
+    <div alignSelf='center' className={classes.root} style={{ maxWidth: '99vw', justifyContent: 'center' }}>
       <GridList cellHeight={180}
         className={classes.gridList}
         style={{
@@ -35,10 +35,14 @@ export default props => {
           display: "block",
         }}>
         <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Explore A Source</ListSubheader>
+          <ListSubheader component="div">
+            <Typography variant="h3" color="textPrimary" style={{ marginLeft: '-19px', marginTop: '20px' }}>
+              Explore by Source
+            </Typography>
+          </ListSubheader>
         </GridListTile >
         {arrOfSources.map((tile) => (
-          <GridListTile style={{ height: 70, width: '80vh', overflowWrap: 'break-word' }}>
+          <GridListTile style={{ height: 70, width: '100vw', overflowWrap: 'break-word' }}>
             <GridListTileBar
               style={{
                 height: 'auto',
@@ -46,7 +50,8 @@ export default props => {
                 flexDirection: 'row',
                 minHeight: '100',
                 alignContent: 'baseline',
-                margin: 'auto'
+                margin: 'auto',
+                minWidth: '80vw'
               }}
               title={
                 <Link to={`/sources/${tile.id}`} style={{ fontSize: 20, color: 'white', textDecoration: 'none' }}>

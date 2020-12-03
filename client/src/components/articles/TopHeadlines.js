@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunks } from '../../store/news';
 import TitleBarGridlist from './GridList';
 
 
 export default TopHeadlines => {
+  const location = useLocation();
   const dispatch = useDispatch();
   let newsComponents;
-  const topNews = useSelector(state => state.news.articles);
   useEffect(() => {
     (async () => {
       dispatch(await thunks.getTopHeadlines());
     })();
-  }, []);
+  }, [location]);
+  const topNews = useSelector(state => state.news.articles);
   if (!topNews) return null;
 
   const setImgUrls = async () => {

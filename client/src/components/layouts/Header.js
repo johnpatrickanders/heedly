@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Link, AppBar, Toolbar, IconButton, Typography, InputBase, MenuItem, Menu } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -79,6 +80,7 @@ export const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
+  const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -155,10 +157,11 @@ export default function PrimarySearchAppBar() {
     dispatch(thunks.fetchSearchQuery(searchString));
   }
   function handleEnter(e) {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' || e.target.id === 'search-button') {
       runSearch();
       e.target.value = '';
       setInput('');
+      history.push('/search')
     }
   }
 
@@ -189,7 +192,7 @@ export default function PrimarySearchAppBar() {
               value={input}
             />
           </div>
-          <SearchButton setInput={setInput} />
+          <SearchButton id='search-button' setInput={setInput} searchString={searchString} />
           <NewsButton />
           <SourcesButton />
           <ReadsButton />

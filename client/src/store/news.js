@@ -43,7 +43,7 @@ const fetchSearchQuery = (searchString) => {
       const { topHeadlines } = await res.json();
       const articles = topHeadlines.articles;
       console.log('getting search results in store...', articles);
-      dispatch(updateSearchResults({ articles }));
+      dispatch(updateSearchResults({ searchResults: articles }));
       // window.location.pathname = '/search';
     }
   }

@@ -8,21 +8,19 @@ import TitleBarGridlist from './GridList';
 export default TopHeadlines => {
   let location = useLocation();
   const dispatch = useDispatch();
-  // history.push('search');
   let newsComponents;
-  const topNews = useSelector(state => state.news.searchResults);
-  console.log("TOP NEWS:", topNews);
-  console.log(location);
-  // useEffect(() => {
-  //   (async () => {
-  //     dispatch(await thunks.getTopHeadlines());
-  //   })();
-  // }, []);
-  if (!topNews) return null;
+  const searchString = useSelector(state => state.news.searchString);
+  useEffect(() => {
+    (async () => {
+      dispatch(await thunks.fetchSearchQuery(searchString));
+    })();
+  }, [location.pathname]);
+  const searchResults = useSelector(state => state.news.searchResults);
+  if (!searchResults) return null;
 
   const setImgUrls = async () => {
-    for (let i = 0; i < topNews.length; i++) {
-      let article = topNews[i];
+    for (let i = 0; i < searchResults.length; i++) {
+      let article = searchResults[i];
       let img = article.urlToImage;
       article.img = img;
     }
@@ -30,7 +28,7 @@ export default TopHeadlines => {
   setImgUrls();
 
   newsComponents = (
-    <TitleBarGridlist articles={topNews} subTitle={"Top News For Today:"}>
+    <TitleBarGridlist articles={searchResults} subTitle={"Top News For Today:"}>
 
     </TitleBarGridlist>
   )

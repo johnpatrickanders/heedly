@@ -57,18 +57,19 @@ export default () => {
   return (
 
     <Typography className={classes.title + "," + classes.colorSecondary} variant="h6">
-      <Paper style={style.Paper,
-      {
-        maxWidth: '60vw',
-        marginTop: '25px',
-        display: 'flex-start',
-        flexDirection: 'column',
-        alignSelf: 'center',
-        padding: '25px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+      <Paper style={
+        {
+          ...style.Paper,
+          maxWidth: '60vw',
+          marginTop: '25px',
+          display: 'flex-start',
+          flexDirection: 'column',
+          alignSelf: 'center',
+          padding: '25px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
 
-      }}>
+        }}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} alt={article.title} style={style.img}></img>
         <MyCustomButton article={article} userId={userId} />

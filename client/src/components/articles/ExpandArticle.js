@@ -63,14 +63,13 @@ export default () => {
     <Typography className={classes.title + "," + classes.colorSecondary} variant="h6">
       <Paper style={style.Paper} style={{
         maxWidth: '60vw',
-        marginTop: '20px',
+        marginTop: '25px',
         display: 'flex-start',
         flexDirection: 'column',
         alignSelf: 'center',
         padding: '25px',
         marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: '25px'
+        marginRight: 'auto'
       }}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} alt={article.title} style={style.img}></img>

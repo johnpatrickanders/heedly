@@ -83,6 +83,7 @@ export default function SignIn(props) {
       >
         <CssBaseline />
         <img src='podium_cut.png'
+          alt='podium logo'
           style={{
             maxHeight: '60vh',
             maxWidth: '50vw',

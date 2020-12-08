@@ -6,7 +6,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { thunks } from '../../store/news';
-import { useStyles } from '../layouts/Header';
 import { Typography } from '@material-ui/core';
 
 export default props => {
@@ -16,6 +15,7 @@ export default props => {
     (async () => {
       dispatch(await thunks.dispatchGetSources());
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const sources = useSelector(state => state.news.sources);
@@ -24,14 +24,7 @@ export default props => {
 
   return (
     <div >
-      <GridList
-      // cellHeight={180}
-      // className={classes.gridList}
-      // style={{
-      //   alignContent: 'flex-start',
-      //   // display: "block",
-      // }}
-      >
+      <GridList>
         <GridListTile key="Subheader" style={{ height: 'auto' }}>
           <ListSubheader component="div">
             <Typography variant="h3" color="textPrimary" style={{ marginLeft: '-19px', marginTop: '20px' }}>

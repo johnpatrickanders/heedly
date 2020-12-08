@@ -36,7 +36,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: '8vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -77,9 +77,12 @@ export default function SignIn(props) {
     dispatch(tryLogin("demo@example.com", "password"));
   }
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyItems: 'flex-start', alignContent: 'flex-start' }}>
-      <Container component='main' className={classes.paper}
+    <div style={{ display: 'flex', flexDirection: 'row', justifyItems: 'flex-start', alignContent: 'flex-start', margin: 0 }}>
+      <Container
+        component='main'
+        className={classes.paper}
         maxWidth='xs'
+        style={{ backgroundColor: '#d1d1d1', marginLeft: 0, marginBottom: 0, marginRight: '15vw', padding: '4vw' }}
       >
         <CssBaseline />
         <img src='podium_cut.png'
@@ -87,13 +90,10 @@ export default function SignIn(props) {
           style={{
             maxHeight: '60vh',
             maxWidth: '50vw',
-            margin: 'auto',
+            // margin: 'auto',
+            marginRight: '-2vw',
             top: '50%',
             left: '50%',
-            border: '3px',
-            strokeWeight: '2px',
-            borderRadius: '3px',
-            storke: 'black'
           }}>
         </img>
         <Typography
@@ -103,14 +103,13 @@ export default function SignIn(props) {
           style={{
             textAlign: 'center',
             fontStyle: 'italic',
-            marginLeft: '6vw',
-            marginTop: '2vh'
           }}>
           News the Mindful Way
         </Typography>
-      </Container>
+      </Container >
 
-      <Container component="main" maxWidth="xs" >
+      <Container component="main" maxWidth="m"
+        style={{ margin: 'auto' }}>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>

@@ -43,8 +43,6 @@ const MyCustomButton = ({ article, userId }) => {
 }
 
 export default () => {
-  const dispatch = useDispatch();
-
 
   const classes = useStyles();
   let pageLoad = useSelector(state => state.news.pageContent);
@@ -53,10 +51,6 @@ export default () => {
     return null;
   }
   const article = pageLoad.article;
-
-  const markAsRead = () => {
-    dispatch(thunks.dispatchArticleMark({ article, userId }))
-  }
 
   return (
 
@@ -74,7 +68,7 @@ export default () => {
       }}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} alt={article.title} style={style.img}></img>
-        <MyCustomButton onClick={markAsRead} article={article} userId={userId} />
+        <MyCustomButton article={article} userId={userId} />
         <h3>
           {article.title}
         </h3>

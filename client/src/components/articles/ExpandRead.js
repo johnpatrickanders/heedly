@@ -31,11 +31,12 @@ const MyCustomButton = ({ article, userId }) => {
   }
   return (
     <IconButton
+      onClick={deleteRead}
       aria-haspopup="true"
       color="inherit"
       style={{ fontSize: 30, marginTop: 15, display: 'block' }}
     >
-      <Icon onClick={deleteRead}
+      <Icon
         className={classes.icon}
         style={{ fontSize: 30, display: 'block' }}
         fullwidth='true'

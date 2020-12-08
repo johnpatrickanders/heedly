@@ -33,23 +33,19 @@ export default props => {
           </ListSubheader>
         </GridListTile >
         {arrOfSources.map((tile) => (
-          <GridListTile style={{ height: 70, width: '100vw', overflowWrap: 'break-word' }}>
+          <GridListTile key={tile.id} style={{ height: '8vh', width: '100vw', overflowWrap: 'break-word' }}>
             <GridListTileBar
               style={{
                 height: 'auto',
                 display: 'flex',
                 flexDirection: 'row',
-                minHeight: '100',
-                alignContent: 'baseline',
-                margin: 'auto',
+                minHeight: '6vh',
                 minWidth: '80vw'
               }}
               title={
                 <Link to={`/sources/${tile.id}`} style={{ fontSize: 20, color: 'white', textDecoration: 'none' }}>
-                  <Typography overflowWrap='true' paragraph={true}>
-                    <p>
-                      {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
-                    </p>
+                  <Typography overflowwrap='true' >
+                    {`${tile.name} - ${(tile.country).toUpperCase()} - ${tile.description}`}
                   </Typography>
                 </Link>}
             />

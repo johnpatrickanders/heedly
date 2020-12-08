@@ -14,6 +14,7 @@ export default TopHeadlines => {
     (async () => {
       dispatch(await thunks.fetchSearchQuery(searchString));
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
   const searchResults = useSelector(state => state.news.searchResults);
   if (!searchResults) return null;

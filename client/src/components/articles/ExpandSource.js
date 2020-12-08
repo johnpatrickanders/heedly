@@ -11,6 +11,7 @@ export default function ({ match }) {
     (async () => {
       dispatch(thunks.dispatchArticlesBySource(sourceId));
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

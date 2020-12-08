@@ -13,6 +13,7 @@ export default TopHeadlines => {
     (async () => {
       dispatch(await thunks.getTopHeadlines());
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
   const topNews = useSelector(state => state.news.articles);
   if (!topNews) return null;

@@ -13,6 +13,7 @@ export default function (props) {
     (async () => {
       dispatch(thunks.dispatchAllReads(userId));
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

@@ -55,7 +55,6 @@ export default () => {
   const article = pageLoad.article;
 
   const markAsRead = () => {
-    debugger
     dispatch(thunks.dispatchArticleMark({ article, userId }))
   }
 

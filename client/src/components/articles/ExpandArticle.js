@@ -61,7 +61,8 @@ export default () => {
   return (
 
     <Typography className={classes.title + "," + classes.colorSecondary} variant="h6">
-      <Paper style={style.Paper} style={{
+      <Paper style={{
+        ...style.Paper,
         maxWidth: '60vw',
         marginTop: '25px',
         display: 'flex-start',
@@ -78,7 +79,7 @@ export default () => {
           {article.title}
         </h3>
         {article.content}
-        <a href={article.url} target='_blank' style={{ display: 'block' }} > Read full story here...</a>
+        <a href={article.url} target='_blank' rel="noopener noreferrer" style={{ display: 'block' }} > Read full story here...</a>
       </Paper>
     </Typography >
   )

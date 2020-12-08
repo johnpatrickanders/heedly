@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { thunks } from '../../store/news';
 import { useStyles } from '../layouts/Header';
@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const SearchButton = ({ setInput, searchString }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  // const searchString = useSelector(state => state.news.searchString);
-  // debugger
+
   const runSearch = () => {
+    if (!searchString) return;
     dispatch(thunks.fetchSearchQuery(searchString));
 
   }
@@ -19,14 +19,14 @@ const SearchButton = ({ setInput, searchString }) => {
       color='inherit'
       type='text'
       onClick={() => {
-        runSearch()
-        setInput('')
+        runSearch();
+        setInput('');
       }}
       className={classes.title}>
       <Link
         style={{ color: 'white', textDecoration: 'none' }}
         className={classes.title}
-        exact="true" to="/search"
+        exact="true" to={!!searchString ? "/search" : "/news"}
       >
         Search
       </Link>

@@ -38,7 +38,7 @@ const MyCustomButton = ({ article, userId }) => {
       <Icon onClick={deleteRead}
         className={classes.icon}
         style={{ fontSize: 30, display: 'block' }}
-        fullWidth='true'
+        fullwidth='true'
       ><HighlightOffIcon /></Icon>
     </IconButton>
   )
@@ -60,14 +60,14 @@ export default () => {
       <Paper style={style.Paper,
       {
         maxWidth: '60vw',
-        marginTop: '20px',
+        marginTop: '25px',
         display: 'flex-start',
         flexDirection: 'column',
         alignSelf: 'center',
         padding: '25px',
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginTop: '25px'
+
       }}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} alt={article.title} style={style.img}></img>

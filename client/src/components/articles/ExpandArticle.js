@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Paper, Typography } from '@material-ui/core';
 import { useStyles } from '../layouts/Header';
@@ -22,30 +21,31 @@ const style = {
 
 const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  if (history.location.pathname === '/reads') {
-    return <h1>HI</h1>
-  }
-  const markAsRead = () => {
-    dispatch(thunks.dispatchArticleMark({ article, userId }))
-  }
+  // const dispatch = useDispatch();
+
+  // const markAsRead = () => {
+  //   dispatch(thunks.dispatchArticleMark({ article, userId }))
+  // }
   return (
     <IconButton
+      // onClick={markAsRead}
       aria-haspopup="true"
       color="inherit"
       style={{ fontSize: 30, marginTop: 15, display: 'block' }}
     >
-      <Icon onClick={markAsRead}
+      <Icon
         className={classes.icon}
         style={{ fontSize: 30, display: 'block' }}
-        fullWidth='true'
+        fullwidth='true'
       >add_circle</Icon>
     </IconButton>
   )
 }
 
 export default () => {
+  const dispatch = useDispatch();
+
+
   const classes = useStyles();
   let pageLoad = useSelector(state => state.news.pageContent);
   const userId = useSelector(state => state.auth.id);
@@ -54,6 +54,9 @@ export default () => {
   }
   const article = pageLoad.article;
 
+  const markAsRead = () => {
+    dispatch(thunks.dispatchArticleMark({ article, userId }))
+  }
 
   return (
 
@@ -71,7 +74,7 @@ export default () => {
       }}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <img src={article.img} alt={article.title} style={style.img}></img>
-        <MyCustomButton article={article} userId={userId} />
+        <MyCustomButton onClick={markAsRead} article={article} userId={userId} />
         <h3>
           {article.title}
         </h3>

@@ -19,7 +19,7 @@ export const MyCustomButton = ({ article, userId }) => {
       <Icon onClick={markAsRead}
         className={classes.icon}
         style={{ fontSize: 30, display: 'block' }}
-        fullWidth='true'
+        fullwidth='true'
       >add_circle</Icon>
     </IconButton>
   )

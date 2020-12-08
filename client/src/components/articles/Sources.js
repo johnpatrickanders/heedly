@@ -10,7 +10,6 @@ import { useStyles } from '../layouts/Header';
 import { Typography } from '@material-ui/core';
 
 export default props => {
-  const classes = useStyles();
 
   const dispatch = useDispatch();
   useEffect(() => {

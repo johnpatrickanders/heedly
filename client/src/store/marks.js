@@ -47,7 +47,6 @@ const dispatchDeleteArticleMark = (articleAndUrl) => {
       body: JSON.stringify({ url, userId }),
     });
     if (res.ok) {
-      const { message } = await res.json();
       dispatch(deleteArticleMark());
       dispatch(dispatchAllReads(userId));
     }

@@ -157,12 +157,17 @@ export default function PrimarySearchAppBar() {
     dispatch(thunks.fetchSearchQuery(searchString));
   }
   function handleEnter(e) {
-    if (e.key === 'Enter' || e.target.id === 'search-button') {
+    if (searchString && e.key === 'Enter') {
       runSearch();
       e.target.value = '';
       setInput('');
-      history.push('/search')
+      history.push('/search');
     }
+    // else if (searchString && e.target.id === 'search-button') {
+    //   runSearch();
+    //   setInput('');
+    //   history.push('/search');
+    // }
   }
 
   return (
@@ -192,7 +197,7 @@ export default function PrimarySearchAppBar() {
               value={input}
             />
           </div>
-          <SearchButton id='search-button' setInput={setInput} searchString={searchString} />
+          <SearchButton id='search-button' onClick={handleEnter} setInput={setInput} searchString={searchString} />
           <NewsButton />
           <SourcesButton />
           <ReadsButton />

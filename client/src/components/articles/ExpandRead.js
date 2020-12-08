@@ -78,7 +78,10 @@ export default () => {
           {article.title}
         </h3>
         {article.content}
-        <a href={article.url} style={{ display: 'block' }} > Read full story here...</a>
+        <a href={article.url}
+          style={{ display: 'block' }}
+          target='_blank'
+          rel="noopener noreferrer"> Read full story here...</a>
       </Paper>
     </Typography >
   )

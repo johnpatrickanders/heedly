@@ -20,7 +20,7 @@ function Copyright() {
     <>
       <Typography style={{ marginTop: '22vh' }} variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
-        <Link href="http://john-anders.com">
+        <Link href="http://john-anders.com" target='_blank' rel="noopener noreferrer">
           John Anders
       </Link>{' '}
         {new Date().getFullYear()}
@@ -28,7 +28,7 @@ function Copyright() {
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
         {'Public Vectors by '}
-        <Link color='textSecondary' href="https://www.vecteezy.com/free-vector/public">Vecteezy</Link>
+        <Link color='textSecondary' href="https://www.vecteezy.com/free-vector/public" target='_blank' rel="noopener noreferrer">Vecteezy</Link>
       </Typography>
     </>
   );
@@ -90,7 +90,6 @@ export default function SignIn(props) {
           style={{
             maxHeight: '60vh',
             maxWidth: '50vw',
-            // margin: 'auto',
             marginRight: '-2vw',
             top: '50%',
             left: '50%',
@@ -108,7 +107,7 @@ export default function SignIn(props) {
         </Typography>
       </Container >
 
-      <Container component="main" maxWidth="m"
+      <Container component="main"
         style={{ margin: 'auto' }}>
         <CssBaseline />
         <div className={classes.paper}>

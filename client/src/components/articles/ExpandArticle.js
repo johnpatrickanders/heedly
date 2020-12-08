@@ -21,14 +21,14 @@ const style = {
 
 const MyCustomButton = ({ article, userId }) => {
   const classes = useStyles();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const markAsRead = () => {
-  //   dispatch(thunks.dispatchArticleMark({ article, userId }))
-  // }
+  const markAsRead = () => {
+    dispatch(thunks.dispatchArticleMark({ article, userId }))
+  }
   return (
     <IconButton
-      // onClick={markAsRead}
+      onClick={markAsRead}
       aria-haspopup="true"
       color="inherit"
       style={{ fontSize: 30, marginTop: 15, display: 'block' }}
@@ -55,6 +55,7 @@ export default () => {
   const article = pageLoad.article;
 
   const markAsRead = () => {
+    debugger
     dispatch(thunks.dispatchArticleMark({ article, userId }))
   }
 

@@ -9,7 +9,7 @@ const deleteArticleMark = () => ({ type: DELETE_ARTICLE_MARK });
 const dispatchArticleMark = (articleAndUser) => {
   const userId = articleAndUser.userId;
   const article = articleAndUser.article;
-
+  debugger;
   return async (dispatch) => {
     const res = await fetch(`/api/news/mark`, {
       method: 'POST',

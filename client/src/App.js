@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Header from './components/layouts/Header';
-import Login from './components/layouts/Login';
+import Login from './components/layouts/login';
 import Logout from './components/layouts/Logout';
 import TopHeadlines from './components/articles/TopHeadlines';
 import ExpandArticle from './components/articles/ExpandArticle';

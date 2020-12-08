@@ -2,6 +2,7 @@ import React from 'react';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
   popover: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MouseOverPopover({ display, popText }) {
+export default function MouseOverPopover({ popText }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -34,7 +35,7 @@ export default function MouseOverPopover({ display, popText }) {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
-        {display ? display : ''}
+        <InfoIcon />
       </Typography>
       <Popover
         id="mouse-over-popover"

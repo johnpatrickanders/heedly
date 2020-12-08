@@ -7,7 +7,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 import Typography from '@material-ui/core/Typography';
 import { thunks } from '../../store/news';
 import MouseOverPopover from '../layouts/PopOver';
@@ -43,6 +42,16 @@ export default function TitlebarGridList(props) {
       history.push('/expand-article');
     }
   }
+  // const action = React.forwardRef((props, ref, title, description) => {
+
+  //   return (
+  //     <IconButton ref={ref} aria-label={`info about ${title}`} className={classes.icon}>
+  //       <MouseOverPopover
+  //         popText={description} />
+  //     </IconButton>
+  //   )
+
+  // })
   return (
     <div className={classes.root}>
       <GridList cellHeight={180}
@@ -67,8 +76,8 @@ export default function TitlebarGridList(props) {
               subtitle={<span>by: {tile.author}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <MouseOverPopover display={<InfoIcon />} popText={tile.description} />
-
+                  <MouseOverPopover
+                    popText={tile.description} />
                 </IconButton>
               }
             />

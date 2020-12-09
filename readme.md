@@ -2,12 +2,12 @@
 ​
 ## Table of Contents
 * [Technologies](#technologies)
+   * [React Components](#react-components)
 * [Feature List](#feature-list)
     * [Sign-Up and Login](#Auth) 
     * [Breaking News](#Breaking-News)
     * [Expand Article](#Expand-Article) 
     * [Mark Reads](#Mark-Reads) 
-* [React Components](#react-components)
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
 * [API Routes](#api-routes)
@@ -23,24 +23,24 @@
 - Material-UI
 - Sequelize
 ​
-## <a name="feature-list"></a>Features - MVP
---------------
-​
-### <a name="Auth"></a>Sing-up and Login
-​
-### <a name="Breaking-News"></a>Breaking News
-- A viewable feed of top news articles from the Feedly API
-​
-### <a name="Expand-Article"></a>Expand Article
-- Ability to click on item in feed to view article and link to news source
-​
-### <a name="Mark-Reads"></a>Mark Reads
-- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
-​
-## <a name ="react-components"></a>React Components
+#### <a name ="react-components"></a>React Components
 - BrowserRouter, Switch, Redirect, NavLink, from react-router-dom
 - Basic hooks including useEffect, useState, useSelector, useDispatch, useHistory
 - GridList/GridListTile, Paper, Icon, Popover, Typography & more from Material-UI React library
+​
+## <a name="feature-list"></a>Features - MVP
+--------------
+​
+#### <a name="Auth"></a>Sing-up and Login
+​
+#### <a name="Breaking-News"></a>Breaking News
+- A viewable feed of top news articles from the Feedly API
+​
+#### <a name="Expand-Article"></a>Expand Article
+- Ability to click on item in feed to view article and link to news source
+​
+#### <a name="Mark-Reads"></a>Mark Reads
+- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
 ​
 ## <a name="database-schema"></a>Database Schema
 ------
@@ -107,12 +107,4 @@
 2. As a typical user, I want to save articles based on my interest so that I can reference them later.
 3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
 ​
-### Bonus (not done): Feeds selection showing sources based on genre
-------------------------------------------------------
-- Add to "Table of Articles" page.
-​
-### Bonus (not done): Ability to mark Article as Most Important of the Day 
------------------------------------------------------------
-- Users to mark an article from END of article view.
-- Display ranking of most HEEDed articles
-- Include on designated "Suggestion" page and/or on Events Dashboard.
+

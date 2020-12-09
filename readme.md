@@ -60,7 +60,19 @@ function loadUser() {
 
 ​
 #### <a name="Breaking-News"></a>Breaking News
-A viewable feed of top news articles from the News API (npm 'newsapi'), using the Node News API wrapper to query.
+A viewable feed of top news articles from the News API (npm 'newsapi'), using the Node News API wrapper to query. This is a lightweight API, and the Node wrapper is a typical implementation per se, allowing easy manipulation of query parameters.
+
+``` js
+router.get('/', asyncHandler(async (req, res) => {
+  const topHeadlines = await newsapi.v2.topHeadlines({
+    country: 'us',
+    language: 'en',
+    sortBy: 'relevancy',
+    pageSize: 20,
+  })
+  res.json({ topHeadlines });
+}))
+```
 ​
 #### <a name="Expand-Article"></a>Expand Article
 Ability to click on item in feed to view article and a link to site of origin's original post. Expanding the full article body is limited by the paywall imposed by the News API; only a short snippet of the article loads. Nevertheless, the design of Heedly would seamlessly integrate full article reading if the paywall lowered.

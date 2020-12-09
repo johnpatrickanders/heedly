@@ -27,6 +27,7 @@
 - Basic hooks including useEffect, useState, useSelector, useDispatch, useHistory
 - GridList/GridListTile, Paper, Icon, Popover, Typography & more from Material-UI React library
 ​
+
 ## <a name="feature-list"></a>Features
 --------------
 ​

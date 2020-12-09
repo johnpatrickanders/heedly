@@ -8,6 +8,7 @@
     * [Breaking News](#Breaking-News)
     * [Expand Article](#Expand-Article) 
     * [Mark Reads](#Mark-Reads) 
+    * [Browse by Search & Source](#Browse) 
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
 * [API Routes](#api-routes)
@@ -30,7 +31,7 @@
 ​
 
 ## <a name="feature-list"></a>Features
-![](readmeImages/heedly.png)
+![](readmeImages/heedly-login.png)
 ​
 #### <a name="Auth"></a>Sing-up and Login
 User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store. (Below is redux code for verifying user login.)
@@ -66,6 +67,10 @@ function loadUser() {
 ​
 #### <a name="Mark-Reads"></a>Mark Reads
 - Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
+​
+#### <a name="Browse"></a>Browse by Search & Source
+- Sources page listing all news sites. Clicking on a site displays the most recent articles on the selected site.
+- Searchbar allows for multiple keywords and returns the most recent articles that match the provided keywords. If no search term is provided, breaking news is returned. The search button or the "Enter" key may be used.
 ​
 ## <a name="database-schema"></a>Database Schema
 ------

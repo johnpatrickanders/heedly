@@ -43,7 +43,7 @@ function loadUser() {
       const decodedPayload = atob(payload);
       //converts from json to JS object
       const data = JSON.parse(decodedPayload);
-      //return user as data (this will set the default state to the user)
+      //returns user as data (this will set the default state to the user)
       return data;
     } catch (e) {
       //any errors then remove the cookie

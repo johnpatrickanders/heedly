@@ -70,11 +70,12 @@ The use of Redux allows for the responsive loading of articles, since the articl
 ![](readmeImages/reads.gif)
 ​
 #### <a name="Mark-Reads"></a>Mark Reads
-- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles. This allows users to save particularly interesting articles and come back to them at a later date.
+Ability to mark article as read or unread, and a Read page that renders a list of "read" articles. This allows users to save particularly interesting articles and come back to them at a later date.
 ​
 #### <a name="Browse"></a>Browse by Search & Source
-- Sources page lists scores of popular news sites. Clicking on a site displays the most recent articles on the selected site.
-- Searchbar allows for multiple keywords and returns the most recent articles that match the provided keywords. If no search term is provided, the user is rerouted to breaking news. The search button or the "Enter" key may be used to trigger the search.
+The sources page lists scores of popular news sites. Clicking on a site displays the most recent articles on the selected site.
+
+The searchbar allows for multiple keywords and returns the most recent articles that match the provided keywords. If no search term is provided, the user is rerouted to breaking news. The search button or the "Enter" key may be used to trigger the search.
 ​
 ## <a name="database-schema"></a>Database Schema
 ------

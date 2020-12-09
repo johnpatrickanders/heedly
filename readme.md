@@ -2,13 +2,16 @@
 ​
 ## Table of Contents
 * [Technologies](#technologies)
-* [User Stories](#user-stories)
+   * [React Components](#react-components)
 * [Feature List](#feature-list)
-* [React Components](#react-components)
+    * [Sign-Up and Login](#Auth) 
+    * [Breaking News](#Breaking-News)
+    * [Expand Article](#Expand-Article) 
+    * [Mark Reads](#Mark-Reads) 
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
 * [API Routes](#api-routes)
-* [Redux Tree](#redux-tree)
+* [User Stories](#user-stories)
 ​
 ## <a name="technologies"></a>Technologies
 - JavaScript
@@ -19,34 +22,50 @@
 - Material-UI
 - Sequelize
 ​
-![](heedly.png)
-​
-## <a name="user-stories"></a>User Stories
-------------
-1. As a typical user, I want to see the news most relevant to my interests.
-2. As a typical user, I want to save articles based on my interest so that I can reference them later.
-3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
-​
-## <a name="feature-list"></a>Features - MVP
---------------
-- [ ] Sign-Up page where users submit their name, email, password, and political leaning
-    - [ ] Log-in page where users provide their email and password to log into the site
-- [ ] A viewable feed of top news articles from the Feedly API
-- [ ] Ability to click on item in feed to view article
-![](heedly-article.png)
-- [ ] Ability to mark article as read or unread
-    - [ ] Read page that renders a list of read articles
-​
-#### Stretch Features (not completed)
--------------------
-- [ ] Ability to mark article as what the other side should pay most attention to and view ranking of most HEEDed articles, one per 24hrs
-- [ ] Search for feeds sources
-- [ ] Ability to mark article as favorite and show favorites
-​
-## <a name ="react-components"></a>React Components
+#### <a name ="react-components"></a>React Components
 - BrowserRouter, Switch, Redirect, NavLink, from react-router-dom
 - Basic hooks including useEffect, useState, useSelector, useDispatch, useHistory
 - GridList/GridListTile, Paper, Icon, Popover, Typography & more from Material-UI React library
+​
+​
+​
+## <a name="feature-list"></a>Features
+--------------
+​
+#### <a name="Auth"></a>Sing-up and Login
+User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store. (Below is redux code for verifying user login.)
+``` js 
+function loadUser() {
+  const authToken = Cookies.get("token");
+  if (authToken) {
+    try {
+      //gets the value from the cookie (index 0 is key, index 1 is the value)
+      const payload = authToken.split(".")[1];
+      //converts base54 encoded binary string into an ASCII string
+      const decodedPayload = atob(payload);
+      //converts from json to JS object
+      const data = JSON.parse(decodedPayload);
+      //returns user as data (this will set the default state to the user)
+      return data;
+    } catch (e) {
+      //any errors then remove the cookie
+      Cookies.remove("token");
+    }
+  }
+  //if no cookie set state to empty object
+  return {};
+}
+```
+
+​
+#### <a name="Breaking-News"></a>Breaking News
+- A viewable feed of top news articles from the Feedly API
+​
+#### <a name="Expand-Article"></a>Expand Article
+- Ability to click on item in feed to view article and link to news source
+​
+#### <a name="Mark-Reads"></a>Mark Reads
+- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
 ​
 ## <a name="database-schema"></a>Database Schema
 ------
@@ -107,12 +126,10 @@
 ### /users/signup (POST)
 ### /users/login (PUT, POST)
 ​
-### Bonus (not done): Feeds selection showing sources based on genre
-------------------------------------------------------
-- Add to "Table of Articles" page.
+## <a name="user-stories"></a>User Stories
+------------
+1. As a typical user, I want to see the news most relevant to my interests.
+2. As a typical user, I want to save articles based on my interest so that I can reference them later.
+3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
 ​
-### Bonus (not done): Ability to mark Article as Most Important of the Day 
------------------------------------------------------------
-- Users to mark an article from END of article view.
-- Display ranking of most HEEDed articles
-- Include on designated "Suggestion" page and/or on Events Dashboard.
+

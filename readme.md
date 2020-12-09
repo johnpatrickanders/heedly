@@ -3,6 +3,10 @@
 ## Table of Contents
 * [Technologies](#technologies)
 * [Feature List](#feature-list)
+    * [Sign-Up and Login](#Auth) 
+    * [Breaking News](#Breaking-News)
+    * [Expand Article](#Expand-Article) 
+    * [Mark Reads](#Mark-Reads) 
 * [React Components](#react-components)
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
@@ -21,10 +25,6 @@
 ​
 ## <a name="feature-list"></a>Features - MVP
 --------------
-* [Sign-Up and Login](#Auth) 
-* [Breaking News](#Breaking-News)
-* [Expand Article](#Expand-Article) 
-* [Mark Reads](#Mark-Reads) 
 ​
 ### <a name="Auth"></a>Sing-up and Login
 ​

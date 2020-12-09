@@ -21,7 +21,7 @@
 ​
 ## <a name="feature-list"></a>Features - MVP
 --------------
-* [Auth] Sign-Up and Login pages
+* [Auth](#Auth) Sign-Up and Login pages
 * [Breaking News] A viewable feed of top news articles from the Feedly API
 * [Expand Article] Ability to click on item in feed to view article and link to news source
 * [Mark Reads] Ability to mark article as read or unread, and a Read page that renders a list of "read" articles

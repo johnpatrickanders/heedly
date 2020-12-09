@@ -11,7 +11,6 @@
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
 * [API Routes](#api-routes)
-* [Redux Tree](#redux-tree)
 * [User Stories](#user-stories)
 ​
 ## <a name="technologies"></a>Technologies

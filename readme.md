@@ -2,13 +2,13 @@
 ​
 ## Table of Contents
 * [Technologies](#technologies)
-* [User Stories](#user-stories)
 * [Feature List](#feature-list)
 * [React Components](#react-components)
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
 * [API Routes](#api-routes)
 * [Redux Tree](#redux-tree)
+* [User Stories](#user-stories)
 ​
 ## <a name="technologies"></a>Technologies
 - JavaScript
@@ -19,29 +19,20 @@
 - Material-UI
 - Sequelize
 ​
-![](heedly.png)
-​
-## <a name="user-stories"></a>User Stories
-------------
-1. As a typical user, I want to see the news most relevant to my interests.
-2. As a typical user, I want to save articles based on my interest so that I can reference them later.
-3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
-​
 ## <a name="feature-list"></a>Features - MVP
 --------------
-- [ ] Sign-Up page where users submit their name, email, password, and political leaning
-    - [ ] Log-in page where users provide their email and password to log into the site
-- [ ] A viewable feed of top news articles from the Feedly API
-- [ ] Ability to click on item in feed to view article
-![](heedly-article.png)
-- [ ] Ability to mark article as read or unread
-    - [ ] Read page that renders a list of read articles
+* [Auth] Sign-Up and Login pages
+* [Breaking News] A viewable feed of top news articles from the Feedly API
+* [Expand Article] Ability to click on item in feed to view article and link to news source
+* [Mark Reads] Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
 ​
-#### Stretch Features (not completed)
--------------------
-- [ ] Ability to mark article as what the other side should pay most attention to and view ranking of most HEEDed articles, one per 24hrs
-- [ ] Search for feeds sources
-- [ ] Ability to mark article as favorite and show favorites
+### <a name="Auth"></a>Sing-up and Login
+​
+### <a name="Breaking-News"></a>Breaking News
+​
+### <a name="Expand-Article"></a>Expand Article
+​
+### <a name="Mark-Reads"></a>Mark Reads
 ​
 ## <a name ="react-components"></a>React Components
 - BrowserRouter, Switch, Redirect, NavLink, from react-router-dom
@@ -106,6 +97,12 @@
 ### /users/token (POST)
 ### /users/signup (POST)
 ### /users/login (PUT, POST)
+​
+## <a name="user-stories"></a>User Stories
+------------
+1. As a typical user, I want to see the news most relevant to my interests.
+2. As a typical user, I want to save articles based on my interest so that I can reference them later.
+3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
 ​
 ### Bonus (not done): Feeds selection showing sources based on genre
 ------------------------------------------------------

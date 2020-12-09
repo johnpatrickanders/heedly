@@ -33,7 +33,7 @@
 ## <a name="feature-list"></a>Features
 ![](readmeImages/heedly-login.png)
 ​
-#### <a name="Auth"></a>Sing-up and Login
+#### <a name="Auth"></a>Sign-up and Login
 User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store. (Below is redux code for verifying user login.)
 ``` js 
 function loadUser() {
@@ -60,17 +60,21 @@ function loadUser() {
 
 ​
 #### <a name="Breaking-News"></a>Breaking News
-- A viewable feed of top news articles from the Feedly API
+A viewable feed of top news articles from the News API (npm 'newsapi'), using the Node News API wrapper to query.
 ​
 #### <a name="Expand-Article"></a>Expand Article
-- Ability to click on item in feed to view article and link to news source
+Ability to click on item in feed to view article and a link to site of origin's original post. Expanding the full article body is limited by the paywall imposed by the News API; only a short snippet of the article loads. Nevertheless, the design of Heedly would seamlessly integrate full article reading if the paywall lowered.
+
+The use of Redux allows for the responsive loading of articles, since the article's body is already loaded and stored before the user decides which article to expand.
+
+![](readmeImages/reads.gif)
 ​
 #### <a name="Mark-Reads"></a>Mark Reads
-- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
+- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles. This allows users to save particularly interesting articles and come back to them at a later date.
 ​
 #### <a name="Browse"></a>Browse by Search & Source
-- Sources page listing all news sites. Clicking on a site displays the most recent articles on the selected site.
-- Searchbar allows for multiple keywords and returns the most recent articles that match the provided keywords. If no search term is provided, breaking news is returned. The search button or the "Enter" key may be used.
+- Sources page lists scores of popular news sites. Clicking on a site displays the most recent articles on the selected site.
+- Searchbar allows for multiple keywords and returns the most recent articles that match the provided keywords. If no search term is provided, the user is rerouted to breaking news. The search button or the "Enter" key may be used to trigger the search.
 ​
 ## <a name="database-schema"></a>Database Schema
 ------

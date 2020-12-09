@@ -21,18 +21,21 @@
 ​
 ## <a name="feature-list"></a>Features - MVP
 --------------
-* [Sign-Up and Login pages](#Auth) 
-* [Breaking News] A viewable feed of top news articles from the Feedly API
-* [Expand Article] Ability to click on item in feed to view article and link to news source
-* [Mark Reads] Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
+* [Sign-Up and Login](#Auth) 
+* [Breaking News](#Breaking-News)
+* [Expand Article](#Expand-Article) 
+* [Mark Reads](#Mark-Reads) 
 ​
 ### <a name="Auth"></a>Sing-up and Login
 ​
 ### <a name="Breaking-News"></a>Breaking News
+- A viewable feed of top news articles from the Feedly API
 ​
 ### <a name="Expand-Article"></a>Expand Article
+- Ability to click on item in feed to view article and link to news source
 ​
 ### <a name="Mark-Reads"></a>Mark Reads
+- Ability to mark article as read or unread, and a Read page that renders a list of "read" articles
 ​
 ## <a name ="react-components"></a>React Components
 - BrowserRouter, Switch, Redirect, NavLink, from react-router-dom

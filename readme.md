@@ -33,8 +33,8 @@
 --------------
 ​
 #### <a name="Auth"></a>Sing-up and Login
-User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store.
-``` js - redux code for user login
+User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store. (Below is redux code for verifying user login.)
+``` js 
 function loadUser() {
   const authToken = Cookies.get("token");
   if (authToken) {

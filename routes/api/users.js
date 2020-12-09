@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { csrfProtection, asyncHandler, handleValidationErrors } = require('../utils/utils');
+const { asyncHandler } = require('../utils/utils');
 
 const { Op } = require('sequelize');
 const { User } = require('../../db/models');
@@ -39,10 +39,7 @@ router.post('/token', asyncHandler(async (req, res, next) => {
 
 router.post(
     '/signup',
-    // userCreationValidators,
-    // handleValidationErrors, // temporarily REMOVED csrfProtection
     asyncHandler(async (req, res, next) => {
-        // res.status(401).json({ errors: ["NOPE"] })
         const { firstName, email, password, confirmPassword, leaning } = req.body;
 
 

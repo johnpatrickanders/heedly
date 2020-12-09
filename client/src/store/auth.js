@@ -72,9 +72,7 @@ function loadUser() {
       //converts base54 encoded binary string into an ASCII string
       const decodedPayload = atob(payload);
       //converts from json to JS object
-      const payloadObj = JSON.parse(decodedPayload);
-      //destructure data
-      const data = payloadObj;
+      const data = JSON.parse(decodedPayload);
       //return user as data (this will set the default state to the user)
       return data;
     } catch (e) {

@@ -4,7 +4,6 @@ const newsapi = new NewsAPI(process.env.API_KEY);
 const express = require('express');
 const router = express.Router();
 const { User, UserHeed, UserMark } = require('../../db/models');
-const Sequelize = require('sequelize');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 

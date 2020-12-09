@@ -31,6 +31,30 @@
 --------------
 ​
 #### <a name="Auth"></a>Sing-up and Login
+User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store.
+``` js - redux code for user login
+function loadUser() {
+  const authToken = Cookies.get("token");
+  if (authToken) {
+    try {
+      //gets the value from the cookie (index 0 is key, index 1 is the value)
+      const payload = authToken.split(".")[1];
+      //converts base54 encoded binary string into an ASCII string
+      const decodedPayload = atob(payload);
+      //converts from json to JS object
+      const data = JSON.parse(decodedPayload);
+      //return user as data (this will set the default state to the user)
+      return data;
+    } catch (e) {
+      //any errors then remove the cookie
+      Cookies.remove("token");
+    }
+  }
+  //if no cookie set state to empty object
+  return {};
+}
+```
+
 ​
 #### <a name="Breaking-News"></a>Breaking News
 - A viewable feed of top news articles from the Feedly API

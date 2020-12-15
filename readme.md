@@ -4,11 +4,11 @@
 * [Technologies](#technologies)
    * [React Components](#react-components)
 * [Feature List](#feature-list)
-    * [Sign-Up and Login](#Auth) 
+    * [Sign-Up and Login](#Auth)
     * [Breaking News](#Breaking-News)
-    * [Expand Article](#Expand-Article) 
-    * [Mark Reads](#Mark-Reads) 
-    * [Browse by Search & Source](#Browse) 
+    * [Expand Article](#Expand-Article)
+    * [Mark Reads](#Mark-Reads)
+    * [Browse by Search & Source](#Browse)
 * [Database Schema](#database-schema)
 * [Frontend Routes](#frontend-routes)
 * [API Routes](#api-routes)
@@ -34,8 +34,8 @@
 ![](readmeImages/heedly-login.png)
 ​
 #### <a name="Auth"></a>Sign-up and Login
-User auth was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store. (Below is redux code for verifying user login.)
-``` js 
+User authentication was implemented using JSON Web Tokens (JWTs). The JWT is passed from the custom API built with Express and bcrypt password hashing, and the relevant info is checked on subsequent protected page loads on the front end in the Redux store. (Below is redux code for verifying user login.)
+``` js
 function loadUser() {
   const authToken = Cookies.get("token");
   if (authToken) {
@@ -154,4 +154,3 @@ The searchbar allows for multiple keywords and returns the most recent articles 
 2. As a typical user, I want to save articles based on my interest so that I can reference them later.
 3. As a politically-conscious user, I want to mindfully browse the news by source so as to compare what multiple sources are covering.
 ​
-

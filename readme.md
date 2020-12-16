@@ -91,6 +91,7 @@ The searchbar allows for multiple keywords and returns the most recent articles 
 ​
 ## <a name="database-schema"></a>Database Schema
 ------
+![](readmeImages/schema.png)
 1. Users
     - name
     - email

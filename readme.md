@@ -93,9 +93,10 @@ The searchbar allows for multiple keywords and returns the most recent articles 
 ------
 ![](readmeImages/schema.png)
 1. Users
-    - name
     - email
-    - password hash
+    - hashedPassword
+    - firstName
+    - leaning
 ​
 2. UserHeeds (i.e. Articles associated with user)
     - id

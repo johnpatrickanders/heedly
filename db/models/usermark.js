@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     userHeedId: DataTypes.STRING
   }, {});
   UserMark.associate = function (models) {
-    // associations can be defined here
+
   };
   return UserMark;
 };

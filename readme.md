@@ -93,6 +93,7 @@ The searchbar allows for multiple keywords and returns the most recent articles 
 ------
 ![](readmeImages/schema.png)
 1. Users
+    - id
     - email
     - hashedPassword
     - firstName

@@ -15,26 +15,26 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "express-bearer-token": "^2.4.0",
-    "express-validator": "^6.4.1",
-    "helmet": "^3.22.0",
+    "express-validator": "^6.12.0",
+    "helmet": "^3.23.3",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "newsapi": "^2.4.1",
-    "open": "^7.2.1",
+    "open": "^7.4.2",
     "per-env": "^1.0.2",
-    "pg": "^8.0.3",
-    "sequelize": "^5.21.7",
+    "pg": "^8.6.0",
+    "sequelize": "^5.22.4",
     "sequelize-cli": "^5.5.1",
-    "uuid": "^8.0.0"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "debug": "~2.6.9",
-    "dotenv": "^8.2.0",
-    "dotenv-cli": "^3.1.0",
-    "nodemon": "^2.0.3"
+    "dotenv": "^8.6.0",
+    "dotenv-cli": "^3.2.0",
+    "nodemon": "^2.0.12"
   }
 }

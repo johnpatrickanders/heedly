@@ -35,10 +35,10 @@ export const actions = {
 
 export const tryLogin = (email, password) => {
   return async (dispatch) => {
-    const response = await fetch('/api/login/', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password })
     });
     if (response.ok) {
       const { id, email } = await response.json();
